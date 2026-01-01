@@ -1,6 +1,6 @@
-import { loginValid } from '../login/login_valid.spec';
-import { navigateToAdminMenu } from '../menuNavigation/navigation_menus.spec';
-import { AdminPage } from '../../pages/admin/user-management/users/admin';
+import { loginValid } from '../../login/login_valid';
+import { navigateToAdminMenu } from '../../menu-navigation/navigation_menus';
+import { AdminPage } from '../../../pages/admin/user-management/users/admin';
 
 
 export const addUserFlow = async (page) => {
