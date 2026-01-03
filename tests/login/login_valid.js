@@ -1,5 +1,5 @@
 import {test} from '@playwright/test';
-import { QA_ENV  } from '../../configs/qa.env';
+import { QA_ENV  } from '../../configs/qa.env.js';
 import { LoginPage } from '../../pages/login.js';
 
 export const loginValid = async(page)=>{
