@@ -13,8 +13,11 @@ export class PayGradePage {
         this.editCurrencySaveButton = page.locator('(//div[@class="oxd-form-actions"])[2]/button[2]');
 
         this.payGradeTableRows = page.locator('//div[@class="oxd-table-card"]');
-        this.payGradeCells = page.locator('//div[@class="oxd-table-card"]/div/div');
-        this.deleteJobButton = page.locator('//div[@class="oxd-table-cell oxd-padding-cell"]/div/button')
+        this.payGradeCells = page.locator('//div[@class="oxd-table-card"]/div/div/div');
+        this.deleteJobButton = page.locator('//div[@class="oxd-table-cell oxd-padding-cell"]/div/button');
+
+        this.deletePayGradeButton = page.locator('//div[@class="orangehrm-modal-footer"]/button[2]');
+        this.deleteSuccessToastMessage = page.locator('//div[@class="oxd-toast-start"]/div[2]/p[2]');
     }
 
 
@@ -61,21 +64,29 @@ export class PayGradePage {
     async findAddedPayGrade(payGradeName) {
     
         const matchedRow = this.payGradeTableRows.filter({
-            has:this.page.locator('//div[@class="oxd-table-card"]/div/div'),
+            //has:this.page.locator('//div[@class="oxd-table-card"]/div/div'),
             hasText: payGradeName
+
         })
 
-        return matchedRow;
+    
+
     }
 
     async deleteCreatedPayGrade(payGradeName) {
 
         const matchedRowforJob = this.payGradeTableRows.filter({
-            has: this.page.locator('//div[@class="oxd-table-card"]/div/div'),
-            hasText:payGradeName
+            hasText: payGradeName
+            
         })
 
-        await matchedRowforJob.locator('//div[@class="oxd-table-card"]/div/div/div/button').click();
+        await matchedRowforJob.locator('//button[1]').click();
+
+
+        await this.deletePayGradeButton.click();
+     
+
+        await expect(this.deleteSuccessToastMessage).toHaveText('Successfully Deleted');
 
     }
   
