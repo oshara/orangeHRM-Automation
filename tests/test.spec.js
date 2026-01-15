@@ -11,6 +11,8 @@ import { deletePayGrade } from './admin/jobs/pay-grades/delete_added_pay_grade';
 import { addEmploymentStatus } from './admin/jobs/employment-status/add_employment_status';
 import { searchAddedEmployStatus } from './admin/jobs/employment-status/search_added_employment_status';
 import { deleteEmploymentStatus } from './admin/jobs/employment-status/delete_employment_status';
+import { addJobCategoryFun } from './admin/jobs/job-categories/add_job_categories';
+import { searchJobCategoriesFunc } from './admin/jobs/job-categories/search_job_categories';
 
 test.describe('Admin Module -Users section', () => {
 
@@ -69,8 +71,17 @@ test.describe('Admin Module -Jobs section', () => {
         await searchAddedEmployStatus(page);
     });
 
-    test.only('Employment Status - Delete the added Employment Status', async ({ page }) => {
+    test('Employment Status - Delete the added Employment Status', async ({ page }) => {
         await deleteEmploymentStatus(page);
     });
+
+    test("Job Categories - Add New Job Category", async ({ page }) => {
+        await addJobCategoryFun(page);
+    });
+
+    test.only("Job Categories - Search the Added Job Category",async({page})=>{
+        await searchJobCategoriesFunc(page);
+
+    })
 
 });
