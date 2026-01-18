@@ -7,6 +7,7 @@ export class JobCategoriesPage {
         this.saveJobCategoriesButton = page.locator('(//div[@class="oxd-form-actions"])/button[2]');
         this.successToastMessageJobCategories = page.locator('//div[@class="oxd-toast-start"]/div[2]/p[2]')
 
+        this.jobCategoryRow = page.locator('//div[@class="oxd-table-card"]');
         this.jobcategoryCell= page.locator('//div[@class="oxd-table-card"]/div/div');
         this.jobCategoryCellInside = page.locator('//div[@class="oxd-table-card"]/div/div/div/button');
 
@@ -31,12 +32,24 @@ export class JobCategoriesPage {
     }
 
     async deleteAddedJobCategory(jobCategoryName){
-      const matchedJobToDelete = await this.jobCategoryCellInside.filter({
+      // Wait for any table card to be visible first
+      await this.jobcategoryCell.first().waitFor({ state: 'visible', timeout: 10000 });
+      
+      // Find the row containing the job category name
+      const matchedRow = this.jobCategoryRow.filter({
         hasText: jobCategoryName
-      })
+      });
+      
+      // Wait for this specific row to be visible
+      await matchedRow.waitFor({ state: 'visible', timeout: 10000 });
 
-      await matchedJobToDelete.locator('i').click();
+      
+      // Find and click the delete button/icon within the row
+      const deleteButton = matchedRow.locator('button i').first();
+      await deleteButton.click();
       await this.page.pause();
+
+      
     }
 
 
