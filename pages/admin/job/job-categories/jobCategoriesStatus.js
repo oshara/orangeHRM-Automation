@@ -11,6 +11,9 @@ export class JobCategoriesPage {
         this.jobcategoryCell= page.locator('//div[@class="oxd-table-card"]/div/div');
         this.jobCategoryCellInside = page.locator('//div[@class="oxd-table-card"]/div/div/div/button');
 
+        this.deleteJobCategoryButton = page.locator('(//div[@class="orangehrm-modal-footer"])/button[2]');
+        this.deleteSuccessToastMessage = page.locator('(//div[@class="oxd-toast-start"])/div[2]/p[2]');
+
 
  
     }
@@ -47,9 +50,13 @@ export class JobCategoriesPage {
       // Find and click the delete button/icon within the row
       const deleteButton = matchedRow.locator('button i').first();
       await deleteButton.click();
-      await this.page.pause();
 
-      
+      await this.deleteJobCategoryButton.click();
+      await expect(this.deleteSuccessToastMessage).toHaveText("Successfully Deleted");
+
+
+      console.log(this.deleteSuccessToastMessage);
+
     }
 
 
