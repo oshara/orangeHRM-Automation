@@ -10,7 +10,10 @@ export const addJobCategoryFun =async(page)=>{
     await navigateJobCategories(page);
 
     const JobCategoriesObj = new JobCategoriesPage(page);
-    await JobCategoriesObj.addJobCategory('Engineering');
+
+    const jobCategoryName = `Job Category _${Date.now()}`
+    await JobCategoriesObj.addJobCategory(jobCategoryName);
     await page.waitForTimeout(3000);
+    return jobCategoryName;
 
 }
