@@ -14,6 +14,7 @@ import { deleteEmploymentStatus } from './admin/jobs/employment-status/delete_em
 import { addJobCategoryFun } from './admin/jobs/job-categories/add_job_categories';
 import { searchJobCategoriesFunc } from './admin/jobs/job-categories/search_job_categories';
 import { deleteJobCategoriesFunc } from './admin/jobs/job-categories/delete_job_categories';
+import { editGeneralInfor } from './admin/organization/edit_general_information';
 
 // test.describe('Admin Module -Users section', () => {
 
@@ -92,4 +93,10 @@ test.describe('Admin Module -Jobs section', () => {
         await deleteJobCategoriesFunc(page);
     });
 
+});
+
+test.describe('Admin Module - Organization section', () => {
+    test.only('Edit General Information', async({page})=>{
+        await editGeneralInfor(page);
+    });
 });
