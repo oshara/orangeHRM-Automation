@@ -16,13 +16,13 @@ export class GeneralInformationPage {
         this.zipCodeInputField = page.locator('(//div[@class="oxd-grid-item oxd-grid-item--gutters"])[11]/div/div[2]/input');
         this.countryDropdownButton = page.locator('//div[@class="oxd-select-wrapper"]');
         this.countryDropdownList = page.locator('//div[@role="listbox"]/div/span');
-        this.notesTextAreaField = page.locator('(//div[@class="oxd-grid-item oxd-grid-item--gutters"])[13]/div/div[2]');
+        this.notesTextAreaField = page.locator('(//div[@class="oxd-grid-item oxd-grid-item--gutters"])[13]/div/div[2]/textarea');
         this.saveGeneralInforButton = page.locator('(//div[@class="oxd-form-actions"])/button');
  
     }
 
 
-    async editGenerationalInformation(organizationName,employeeNumber,registrationNumber,taxIdNumber,phoneNumber,faxNumber,email,address1,address2,cityName,stateName,zipCode,country){
+    async editGenerationalInformation(organizationName,employeeNumber,registrationNumber,taxIdNumber,phoneNumber,faxNumber,email,address1,address2,cityName,stateName,zipCode,country,note){
         await this.editGeneralInfoButton.click();
         await this.organizationNameInputField.fill(organizationName);
         await this.numberofEmployeesInputField.type(employeeNumber)
@@ -41,6 +41,19 @@ export class GeneralInformationPage {
 
         const countryCount = await this.countryDropdownList.count();
         console.log('Total Country Count is ' + countryCount);
+
+        for(let x=0; x<countryCount; x++){
+                const  countryName = await this.countryDropdownList.nth(x).textContent();
+                if(countryName==country){
+                    await this.countryDropdownList.nth(x).click();
+                    console.log('Selected Country is ' + countryName);
+                    break;
+                }
+        }
+
+        await this.notesTextAreaField.fill(note);
+        await this.saveGeneralInforButton.click();
+        await this.page.waitForTimeout(4000);
 
 
 
