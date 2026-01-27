@@ -22,3 +22,14 @@ export const navigateJobCategories = async(page) =>{
     const AdminSuMenuObj = new AdminSubMenu(page);
     await AdminSuMenuObj.clickJobCategoriesMenu();
 }
+
+export const navigateWorkShifts = async(page) =>{
+    const AdminSuMenuObj = new AdminSubMenu(page);
+    await AdminSuMenuObj.clickWorkShiftsMenu();
+
+}
+
+export const navigateToGeneralInformation = async(page)=>{
+    const AdminSuMenuObj = new AdminSubMenu(page);
+    await AdminSuMenuObj.clickGeneralInformationMenu();
+}
