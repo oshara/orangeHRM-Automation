@@ -3,7 +3,11 @@ export class AdminSubMenu {
     constructor(page) { 
         this.page= page;
 
+        // Admin Sub Menu Locators
         this.jobMenu = page.locator('//div[@class="oxd-topbar-body"]/nav/ul/li[2]');
+        this.organizationMenu = page.locator('//div[@class="oxd-topbar-body"]/nav/ul/li[3]');
+
+
         // Job Sub Menu Locators
         this.jobTitleMenu = page.locator('//div[@class="oxd-topbar-body"]/nav/ul/li[2]/ul/li[1]/a');
         this.payGradesMenu = page.locator('//div[@class="oxd-topbar-body"]/nav/ul/li[2]/ul/li[2]/a');
@@ -57,5 +61,24 @@ export class AdminSubMenu {
     async clickJobCategoriesMenu(){
         await this.clickJobMenu();
         await this.jobCategoriesMenu.click();
+    }
+
+    async clickWorkShiftsMenu(){
+        await this.clickJobMenu();
+        await this.workShiftsMenu.click();
+    }
+
+    async clickOrganizationMenu(){
+        await this.organizationMenu.click();
+    }
+
+    async clickGeneralInformationMenu(){
+        await this.clickOrganizationMenu();
+        await this.generalInformationMenu.click();
+    }
+
+    async clickLocationsMenu(){
+        await this.clickOrganizationMenu();
+        await this.locationsMenu.click();
     }
 }
