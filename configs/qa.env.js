@@ -22,7 +22,7 @@ export const QA_ENV ={
             registrationNumber :'7006000',
             taxIdNumber:'TX1002',
             phoneNumber:'077918288929',
-            faxNumber:'TF9393820',
+            faxNumber:'109393820',
             email:'generalInfor@gmail.com',
             address1: '111/B Baker Street',
             address2:'Near City Hospital',
@@ -35,6 +35,18 @@ export const QA_ENV ={
 
 
 
+        },
+
+        locationInfor:{
+            locationName :`Head Office _${Date.now()}`,
+            city: 'Austin',
+            state: 'Texas',
+            zipCode: '80000',
+            country :'Switzerland',
+            phone: '077918288929',
+            fax: '109393820',
+            address: '111/B Baker Street, Near City Hospital',
+            notes: 'This is Head Office location added for testing activities'
         }
 
     }
