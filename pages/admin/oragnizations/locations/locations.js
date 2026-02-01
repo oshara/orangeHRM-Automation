@@ -22,6 +22,7 @@ export class LocationsPage{
         this.searchLoctionByNameInput = page.locator('(//div[@class="oxd-grid-item oxd-grid-item--gutters"])[1]/div/div[2]/input');
         this.searchButton = page.locator('(//div[@class="oxd-form-actions"])/button[2]');
         this.locationTableRows = page.locator('//div[@class="oxd-table-card"]');
+        this.locationTableRows2= page.locator('//div[@class="oxd-table-body"]/div/div');
 
 
     }
@@ -32,8 +33,12 @@ export class LocationsPage{
 
     async fillLocationForm(locationName,city,state,zipCocde,country,phone,fax,address,notes){
         await this.locationNameInput.fill(locationName);
+      await expect(this.locationNameInput).toHaveValue(locationName);
+      console.log("Location Name entered is "+ locationName);
+
         await this.cityInput.fill(city);
-        await this.stateInput.fill(state);
+        await this.stateInput.fill(state);  
+
         await this.zipCodeInput.fill(zipCocde);
         
         await this.countryDropdown.click();
@@ -61,7 +66,7 @@ export class LocationsPage{
 
         await expect(this.toastSuccessMessage).toHaveText("Successfully Saved");
         
-
+     
     }
 
     async searchLocationByName(locationName){
@@ -69,8 +74,18 @@ export class LocationsPage{
         await this.searchButton.click();
         await this.page.waitForTimeout(2000);
         const rowCount = await this.locationTableRows.count();
-       for(let x=0; x<rowCount; x++){
-         
+       
+        for(let r=0;r< rowCount;r++){
+            const row = await this.locationTableRows.nth(r);
+            const tds = row.locator('div');
+         for(let z=0;z< await tds.count();z++){
+            const cellText = await tds.nth(z).innerText();
+            if(cellText ==locationName){
+                 expect(cellText).toBe(locationName);
+                console.log("Location Name found in table: "+ cellText);
+                break;
+            }
+         }
 
     }
 
