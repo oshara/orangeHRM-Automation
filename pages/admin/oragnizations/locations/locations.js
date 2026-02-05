@@ -24,6 +24,10 @@ export class LocationsPage{
         this.locationTableRows = page.locator('//div[@class="oxd-table-card"]');
         this.locationTableRows2= page.locator('//div[@class="oxd-table-body"]/div/div');
 
+        this.deleteLocationIcon = page.locator('(//div[@class="oxd-table-cell-actions"])/button[1]');
+        this.deleteLocationButton = page.locator('(//div[@class="orangehrm-modal-footer"])/button[2]');
+        this.deleteSuccessToastMessage = page.locator('(//div[@class="oxd-toast-start"])/div[2]/p[2]');
+
 
     }
 
@@ -89,6 +93,12 @@ export class LocationsPage{
 
     }
 
+    }
+
+    async deleteLocationByName(){
+        await this.deleteLocationIcon.click();
+        await this.addLocationButton.click();
+        await expect(this.deleteSuccessToastMessage).toHaveText('Successfully Deleted');
     }
 }
        
