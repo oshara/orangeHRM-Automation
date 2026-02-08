@@ -14,8 +14,10 @@ import { deleteEmploymentStatus } from './admin/jobs/employment-status/delete_em
 import { addJobCategoryFun } from './admin/jobs/job-categories/add_job_categories';
 import { searchJobCategoriesFunc } from './admin/jobs/job-categories/search_job_categories';
 import { deleteJobCategoriesFunc } from './admin/jobs/job-categories/delete_job_categories';
-import { editGeneralInfor } from './admin/organization/edit_general_information';
-
+import { editGeneralInfor } from './admin/organization/general-information/edit_general_information';
+import { addLocationFunc } from './admin/organization/locations/add_location';
+import { searchAddedLocationFunc } from './admin/organization/locations/search_added_location';
+import { QA_ENV } from '../configs/qa.env';
 // test.describe('Admin Module -Users section', () => {
 
 //     test('Add user', async ({ page }) => {
@@ -96,7 +98,21 @@ test.describe('Admin Module -Jobs section', () => {
 });
 
 test.describe('Admin Module - Organization section', () => {
-    test.only('Edit General Information', async({page})=>{
+    test('General Information -Edit General Information', async({page})=>{
         await editGeneralInfor(page);
     });
+
+    test("Locations - Add New Location",async({page})=>{
+        const addedLocationName = await addLocationFunc(page);
+        console.log("Added Location Name: " + addedLocationName);
+    })
+
+    test("Locations - Search the Added Location",async({page})=>{
+        const locationName = QA_ENV.oragnizationInfor.locationInfor.locationName;
+        await searchAddedLocationFunc(page, locationName);
+    })
+    test.only('Locations- Delete the Added Location' ,async({page})=>{
+        const locationName = QA_ENV.oragnizationInfor.locationInfor.locationName;
+        await searchAddedLocationFunc(page, locationName);
+    })
 });
