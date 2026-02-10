@@ -47,6 +47,11 @@ export const QA_ENV ={
             fax: '109393820',
             address: '111/B Baker Street, Near City Hospital',
             notes: 'This is Head Office location added for testing activities'
+        },
+        structureInfor:{
+            unitId :`H-1112_${Date.now()}`,
+            name: 'QA Team',
+            description :'This is a test description on the QA team'
         }
 
     }

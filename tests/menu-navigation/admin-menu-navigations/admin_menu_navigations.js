@@ -38,3 +38,8 @@ export const navigateToLocations = async(page)=>{
     const AdminSuMenuObj = new AdminSubMenu(page);
     await AdminSuMenuObj.clickLocationsMenu();
 }
+
+export const navigateToStructure = async(page)=>{
+    const AdminSubMenuObj = new AdminSubMenu(page);
+    await AdminSubMenuObj.clickStructureMenu();
+}
