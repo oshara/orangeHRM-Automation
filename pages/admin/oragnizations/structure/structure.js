@@ -9,6 +9,8 @@ export class StructurePage {
         this.descriptionInputField = page.locator('(//div[@class="oxd-form-row"])[3]/div/div[2]/textarea');
         this.saveNewStructureButton = page.locator('(//div[@class="oxd-form-actions"])/button[2]');
         this.successToastMessage = page.locator('(//div[@class="oxd-toast-start"])/div[2]/p[2]');
+
+        this.structureTableRows = page.locator('//div[@class="oxd-tree-node-content"]');
         
     }
 
@@ -26,5 +28,22 @@ export class StructurePage {
         await expect(this.successToastMessage).toHaveText('Successfully Saved');
     }
 
-    
+
+    async searchAddedStructure(structureName){
+
+        await this.page.waitForTimeout(4000);
+        const rows = await this.structureTableRows.count();
+        console.log(rows)
+        for(let x=0; x < rows; x++){
+            const cellText = await this.structureTableRows.nth(x).innerText();
+            if(cellText == structureName){
+                expect(cellText).toBe(structureName);
+                console.log(cellText);
+                break;
+            }
+
+        }
+
+    }
+ 
 }
