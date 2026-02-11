@@ -3,12 +3,12 @@ import { loginValid } from "../../../login/login_valid"
 import { navigateToStructure } from "../../../menu-navigation/admin-menu-navigations/admin_menu_navigations";
 import { navigateToAdminMenu } from "../../../menu-navigation/navigation_menus";
 
-export const searchAddedStructureFunc =async(page) =>{
+export const searchAddedStructureFunc = async(page, structureName) =>{
 
     await loginValid(page);
     await navigateToAdminMenu(page);
     await navigateToStructure(page);
 
     const StructureObj = new StructurePage(page);
-    await StructureObj.searchAddedStructure("Finance");
+    await StructureObj.searchAddedStructure(structureName);
 }

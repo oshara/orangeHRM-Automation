@@ -11,6 +11,8 @@ export const addNewStructureFunc = async(page)=>{
     await navigateToStructure(page);
 
     const StructureObj = new StructurePage(page);
-    await StructureObj.addNewStructure(QA_ENV.oragnizationInfor.structureInfor.unitId,QA_ENV.oragnizationInfor.structureInfor.name,QA_ENV.oragnizationInfor.structureInfor.description);
-
+    const structureName = QA_ENV.oragnizationInfor.structureInfor.name;
+    await StructureObj.addNewStructure(QA_ENV.oragnizationInfor.structureInfor.unitId, structureName, QA_ENV.oragnizationInfor.structureInfor.description);
+    
+    return structureName;
 }
