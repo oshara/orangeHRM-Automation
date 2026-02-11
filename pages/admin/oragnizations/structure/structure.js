@@ -1,6 +1,6 @@
 import { expect } from "@playwright/test";
 export class StructurePage {
-    constructor(page){
+    constructor(page) {
         this.page = page;
         this.sturctureToggleButton = page.locator('(//div[@class="oxd-switch-wrapper"])/label/input[@type="checkbox"]');
         this.addStructureButton = page.locator('(//div[@class="org-root-container"])/button');
@@ -11,14 +11,18 @@ export class StructurePage {
         this.successToastMessage = page.locator('(//div[@class="oxd-toast-start"])/div[2]/p[2]');
 
         this.structureTableRows = page.locator('//div[@class="oxd-tree-node-content"]');
-        
+        this.structureTableRows1 = page.locator('(//div[@class="oxd-tree-node-content"])/div[1]/div[2]')
+        this.structureTableDeleteButtons = page.locator('//div[@class="org-action"]/button[1]');
+
+        this.deleteOption = page.locator('(//div[@class="orangehrm-modal-footer"])/button[2]');
+
     }
 
-    async clickEditToggle(){
+    async clickEditToggle() {
         await this.sturctureToggleButton.click();
     }
 
-    async addNewStructure(unitId,structureName,structureDescription){
+    async addNewStructure(unitId, structureName, structureDescription) {
         await this.clickEditToggle();
         await this.addStructureButton.click();
         await this.unitIdInputField.fill(unitId);
@@ -29,14 +33,14 @@ export class StructurePage {
     }
 
 
-    async searchAddedStructure(structureName){
+    async searchAddedStructure(structureName) {
 
         await this.page.waitForTimeout(4000);
         const rows = await this.structureTableRows.count();
         console.log(rows)
-        for(let x=0; x < rows; x++){
+        for (let x = 0; x < rows; x++) {
             const cellText = await this.structureTableRows.nth(x).innerText();
-            if(cellText == structureName){
+            if (cellText == structureName) {
                 expect(cellText).toBe(structureName);
                 console.log(cellText);
                 break;
@@ -45,5 +49,25 @@ export class StructurePage {
         }
 
     }
- 
+
+    async deleteAddedStructure(structureName) {
+
+        await this.page.waitForTimeout(4000);
+         await this.clickEditToggle();
+        const row = await this.structureTableRows1.count();
+        for (let r = 0; r < row; r++) {
+            const rowData = await this.structureTableRows1.nth(r).innerText();
+            console.log("row data" + rowData);
+            if (rowData == structureName) {
+                const cellData = this.structureTableRows1.nth(r).locator('button').first();
+                await cellData.click();
+                await this.deleteOption.click();
+
+                break;
+            }
+
+        }
+
+    }
+
 }
