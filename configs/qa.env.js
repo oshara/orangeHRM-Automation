@@ -53,6 +53,11 @@ export const QA_ENV ={
             name: 'QA Team',
             description :'This is a test description on the QA team'
         }
+        
+    },
+    skillsInfor:{
+            skillName : `Communication Skill _${Date.now()}`,
+            description: 'This is a description about the added skill'
+        }
 
-    }
 }
