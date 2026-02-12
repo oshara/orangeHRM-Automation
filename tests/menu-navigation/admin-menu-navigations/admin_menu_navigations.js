@@ -43,3 +43,23 @@ export const navigateToStructure = async(page)=>{
     const AdminSubMenuObj = new AdminSubMenu(page);
     await AdminSubMenuObj.clickStructureMenu();
 }
+
+export const navigateToSkills = async(page)=>{
+    const AdminSubMenuObj = new AdminSubMenu(page);
+    await AdminSubMenuObj.clickSkillsMenu();
+}
+
+export const navigateToEducation = async(page)=>{
+    const AdminSubMenuObj = new AdminSubMenu(page);
+    await AdminSubMenuObj.clickEducationMenu();
+}
+
+export const navigateToLisences = async(page)=>{
+    const AdminSumMenuObj = new AdminSubMenu(page);
+    await AdminSumMenuObj.clickLisencesmenu();
+}
+
+export const navigateToLanguages = async(page)=>{
+    const AdminSubMenuObj = new AdminSubMenu(page);
+    await AdminSubMenuObj.clickLanguagesMenu();
+}

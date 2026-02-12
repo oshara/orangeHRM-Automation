@@ -6,6 +6,7 @@ export class AdminSubMenu {
         // Admin Sub Menu Locators
         this.jobMenu = page.locator('//div[@class="oxd-topbar-body"]/nav/ul/li[2]');
         this.organizationMenu = page.locator('//div[@class="oxd-topbar-body"]/nav/ul/li[3]');
+        this.qualificationsMenu = page.locator('//div[@class="oxd-topbar-body"]/nav/ul/li[4]');
 
 
         // Job Sub Menu Locators
@@ -68,6 +69,7 @@ export class AdminSubMenu {
         await this.workShiftsMenu.click();
     }
 
+    // Organization Menu Methods
     async clickOrganizationMenu(){
         await this.organizationMenu.click();
     }
@@ -80,5 +82,36 @@ export class AdminSubMenu {
     async clickLocationsMenu(){
         await this.clickOrganizationMenu();
         await this.locationsMenu.click();
+    }
+    async clickStructureMenu(){
+        await this.clickOrganizationMenu()  
+        await this.structurMenu.click();
+    }
+
+    //Qualification Sub Menus
+
+    async clickQualificationsMenu(){
+        await this.qualificationsMenu.click();
+    }
+    async clickSkillsMenu(){
+        await this.clickQualificationsMenu();
+        await this.skillsMenu.click();
+    }
+
+    async clickEducationMenu(){
+        await this.clickQualificationsMenu();
+        await this.eductionMenu.click();
+
+    }
+
+
+    async clickLisencesmenu(){
+        await this.clickQualificationsMenu();
+        await this.licensesMenu.click();
+    }
+
+    async clickLanguagesMenu(){
+        await this.clickQualificationsMenu();
+        await this.clickLanguagesMenu.click();
     }
 }
