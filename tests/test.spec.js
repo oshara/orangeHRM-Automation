@@ -18,6 +18,12 @@ import { editGeneralInfor } from './admin/organization/general-information/edit_
 import { addLocationFunc } from './admin/organization/locations/add_location';
 import { searchAddedLocationFunc } from './admin/organization/locations/search_added_location';
 import { QA_ENV } from '../configs/qa.env';
+import { addNewStructureFunc } from './admin/organization/structure/add_structure';
+import { searchAddedStructureFunc } from './admin/organization/structure/search_structure';
+import { deleteAddedStructureFunc } from './admin/organization/structure/delete_structure';
+import { addNewSkillFunc } from './admin/qualifications/skills/add_skill';
+import { searchAddeSkillFunc } from './admin/qualifications/skills/search_skill';
+import { deleteAddedSkillFunc } from './admin/qualifications/skills/delete_skill';
 // test.describe('Admin Module -Users section', () => {
 
 //     test('Add user', async ({ page }) => {
@@ -111,8 +117,41 @@ test.describe('Admin Module - Organization section', () => {
         const locationName = QA_ENV.oragnizationInfor.locationInfor.locationName;
         await searchAddedLocationFunc(page, locationName);
     })
-    test.only('Locations- Delete the Added Location' ,async({page})=>{
+    test('Locations- Delete the Added Location' ,async({page})=>{
         const locationName = QA_ENV.oragnizationInfor.locationInfor.locationName;
         await searchAddedLocationFunc(page, locationName);
     })
+
+    test('Structure - Add New Structure',async({page})=>{
+        const addedStructureName = await addNewStructureFunc(page);
+        console.log("Added Structure Name: " + addedStructureName);
+    })
+
+    test('Structure - Search the Added New Structure',async({page})=>{
+        const structureName = QA_ENV.oragnizationInfor.structureInfor.name;
+        await searchAddedStructureFunc(page, structureName);
+       
+    })
+
+    test('Structure - Delete the Added Structure' , async({page})=>{
+        await deleteAddedStructureFunc(page);
+    });
+
+    
 });
+
+    test.describe('Admin Moudle - Qualification Section',()=>{
+        test('Skills - Add a new Skill',async({page})=>{
+            await addNewSkillFunc(page);
+        })
+
+        test('Skills - Search the added Skill',async({page})=>{
+            await searchAddeSkillFunc(page);
+        })
+
+        test.only('Skills - Delete the added Skill',async({page})=>{
+            await deleteAddedSkillFunc(page);
+        })
+   
+   
+    });
