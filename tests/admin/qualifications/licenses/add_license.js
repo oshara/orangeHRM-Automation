@@ -1,3 +1,4 @@
+import { QA_ENV } from "../../../../configs/qa.env";
 import { LicensesPage } from "../../../../pages/admin/qualifications/lisences/lisences";
 import { loginValid } from "../../../login/login_valid"
 import { navigateToLisences, navigateToSkills } from "../../../menu-navigation/admin-menu-navigations/admin_menu_navigations";
@@ -10,7 +11,9 @@ export const addLicenseFunc = async(page)=>{
     await navigateToLisences(page);
 
 
-    const licenseName = "Test License";
+    //const licenseName = "Test License";
     const licensesPage = new LicensesPage(page);
-    await licensesPage.addNewLicense(licenseName);
+    await licensesPage.addNewLicense(QA_ENV.liceseInfor.licenseName);
+    return QA_ENV.liceseInfor.licenseName;
 }
+
