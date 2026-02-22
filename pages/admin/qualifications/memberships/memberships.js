@@ -1,3 +1,4 @@
+import { expect } from "@playwright/test";
 export class MembershipsPage {
     constructor(page){
         this.page = page;
@@ -14,4 +15,15 @@ export class MembershipsPage {
         await this.page.waitForTimeout(2000);
     }
 
+
+    async searchAddedMembership(membershipName){
+        await this.page.waitForTimeout(2000);
+        const membershipRow = await this.page.locator('//div[@class="oxd-table-card"]',{
+            hasText:membershipName
+        })
+
+        await expect(membershipRow).toHaveText(membershipName)
+
+        await this.page.waitForTimeout(2000);
+    }
 }
