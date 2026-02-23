@@ -27,6 +27,9 @@ import { deleteAddedSkillFunc } from './admin/qualifications/skills/delete_skill
 import { addLicenseFunc } from './admin/qualifications/licenses/add_license';
 import { searchLicenseFunc } from './admin/qualifications/licenses/search_license';
 import { deleteLicenseFunc } from './admin/qualifications/licenses/delete_license';
+import { addMembershipsFunc } from './admin/qualifications/memberships/add_memberships';
+import { searchMembershipFunc } from './admin/qualifications/memberships/search_memberships';
+import { deleteMembershipFunc } from './admin/qualifications/memberships/delete_memberships';
 // test.describe('Admin Module -Users section', () => {
 
 //     test('Add user', async ({ page }) => {
@@ -156,17 +159,31 @@ test.describe('Admin Module - Organization section', () => {
             await deleteAddedSkillFunc(page);
         })
 
-        test.only('Licenses - Add a new License',async({page})=>{
+        test('Licenses - Add a new License',async({page})=>{
            await addLicenseFunc(page);
+           
         })
 
-        test.only('Licenses - Search the Added License',async({page})=>{
+        test('Licenses - Search the Added License',async({page})=>{
             await searchLicenseFunc(page);
 
         })
 
         test('Licenses - Delete the Added License',async({page})=>{
             await deleteLicenseFunc(page)
+        })
+
+        test('Memberships - Add New Membership',async({page})=>{
+            await addMembershipsFunc(page);
+        })
+
+        test('Memberships - Search the Added Membership',async({page})=>{
+            await searchMembershipFunc(page);
+        })
+
+        test.only('Memberships - Delete the Added Membership',async({page})=>{
+
+            await deleteMembershipFunc(page);
         })
    
    
