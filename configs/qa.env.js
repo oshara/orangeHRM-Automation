@@ -58,6 +58,18 @@ export const QA_ENV ={
     skillsInfor:{
             skillName : `Communication Skill _${Date.now()}`,
             description: 'This is a description about the added skill'
+        },
+    liceseInfor:{
+        licenseName : `License _${Date.now()}`
+    },
+
+    myInfor:{
+        personalInfor:{
+            firstName:'Sam',
+            middleName:'Ryan',
+            lastName:'Smith'
         }
+
+    }
 
 }

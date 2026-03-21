@@ -4,7 +4,7 @@ export class MyInfoPage {
         this.contactDetailsMenu = page.locator('//a[contains(text(),"Contact Details")]');
         this.emergencyContactsMenu= page.locator('//a[contains(text(),"Emergency Contacts")]');
         this.dependentsMenu = page.locator('//a[contains(text(),"Dependents")] ');
-        this.imigrationMenu = page.locatro('//a[contains(text(),"Immigration")]');
+        this.imigrationMenu = page.locator('//a[contains(text(),"Immigration")]');
         this.jobMenu = page.locator('//a[contains(text(),"Job")]');
         this.salaryMenu = page.locator('//a[contains(text(),"Salary")]');
         this.reportToMenu = page.locator('//a[contains(text(),"Report-to")]');

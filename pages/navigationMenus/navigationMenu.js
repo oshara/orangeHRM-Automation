@@ -7,7 +7,7 @@ export class NavigationMenuPage {
         this.leaveMenu = page.locator('//a[@href="/web/index.php/leave/viewLeaveModule"]');
         this.timeMenu = page.locator('//a[@href="/web/index.php/time/viewTimeModule"]');
         this.recruitementMenu = page.locator('//a[@href="/web/index.php/recruitment/viewRecruitmentModule"]');
-        this.myInforMenu = page.locator('//a[@href="/web/index.php/recruitment/viewRecruitmentModule"]');
+        this.myInforMenu = page.locator('//a[@href="/web/index.php/pim/viewMyDetails"]');
         this.performanceMenu = page.locator('//a[@href="/web/index.php/performance/viewPerformanceModule"]');
         this.dashboardMenu = page.locator('//a[@href="/web/index.php/dashboard/index"]');
         
