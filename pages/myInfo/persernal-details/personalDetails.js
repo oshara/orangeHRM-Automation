@@ -1,3 +1,5 @@
+import { expect } from "@playwright/test";
+
 export class PersonalDetailsPage {
     constructor(page){
         this.page= page;
@@ -14,14 +16,31 @@ export class PersonalDetailsPage {
         this.nationalityList = page.locator('//div[@role="listbox"]/div/span');
 
         this.saveButton = page.locator('(//button[@type="submit"])[1]');
+        this.successToastMessage = page.locator('//div[@class="oxd-toast-start"]/div[2]/p[2]');
 
     
     }
 
     async editNamesFields(firstName,middleName,lastName){
+            await this.employeeFirstNameInputField.click();
             await this.employeeFirstNameInputField.fill(firstName);
+            await this.page.waitForTimeout(2000);
+            this.employeeMiddleNameInputField.click();
             await this.employeeMiddleNameInputField.fill(middleName);
+            await this.employeeLastNameInputField.click();
             await this.employeeLastNameInputField.fill(lastName);
             await this.saveButton.click();
+            await this.page.waitForTimeout(2000);
+            await expect(this.successToastMessage).toHaveText('Successfully Updated');
+        }
+
+        async editEmployeeID(employeeID,otherID){
+            await this.employeeIDInputField.click();
+            await this.employeeIDInputField.fill(employeeID);
+            await this.otherIDInputField.click();
+            await this.otherIDInputField.fill(otherID)
+            await this.saveButton.click();
+            await this.page.waitForTimeout(2000);
+            await expect(this.successToastMessage).toHaveText('Successfully Updated');
         }
 }

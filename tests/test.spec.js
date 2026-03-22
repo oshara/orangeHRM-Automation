@@ -30,6 +30,7 @@ import { deleteLicenseFunc } from './admin/qualifications/licenses/delete_licens
 import { addMembershipsFunc } from './admin/qualifications/memberships/add_memberships';
 import { searchMembershipFunc } from './admin/qualifications/memberships/search_memberships';
 import { deleteMembershipFunc } from './admin/qualifications/memberships/delete_memberships';
+import { editCustomFields, editEmployeeIDFunc } from './myInfo/personal-details/edit_custom_field';
 // test.describe('Admin Module -Users section', () => {
 
 //     test('Add user', async ({ page }) => {
@@ -146,7 +147,7 @@ test.describe('Admin Module - Organization section', () => {
     
 });
 
-    test.describe('Admin Moudle - Qualification Section',()=>{
+    test.describe('Admin Module - Qualification Section',()=>{
         test('Skills - Add a new Skill',async({page})=>{
             await addNewSkillFunc(page);
         })
@@ -181,10 +182,26 @@ test.describe('Admin Module - Organization section', () => {
             await searchMembershipFunc(page);
         })
 
-        test.only('Memberships - Delete the Added Membership',async({page})=>{
+        test('Memberships - Delete the Added Membership',async({page})=>{
 
             await deleteMembershipFunc(page);
         })
    
    
     });
+
+    test.describe("Admin Module - My Infor Section",()=>{
+        
+        test.only('Perosnal Details - Edit Name Fields',async({page})=>{
+
+            await editCustomFields(page);
+            
+
+        })
+
+        test.only('Personal Details - Edit employee ID and other ID',async({page})=>{
+            await editEmployeeIDFunc(page);
+            await page.pause();
+
+        })
+    })

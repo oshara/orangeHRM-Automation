@@ -65,9 +65,12 @@ export const QA_ENV ={
 
     myInfor:{
         personalInfor:{
-            firstName:'Sam',
-            middleName:'Ryan',
-            lastName:'Smith'
+            firstName:'Will1',
+            middleName:'Jones',
+            lastName:'Wade',
+            employeeID:'839920',
+            otherID: 'BN03003'
+
         }
 
     }
