@@ -25,3 +25,15 @@ export const editEmployeeIDFunc = async(page)=>{
     await PersonalDetailObj.editEmployeeID(QA_ENV.myInfor.personalInfor.employeeID,QA_ENV.myInfor.personalInfor.otherID)
 
  }
+
+ export const editDrivingLicenseFunc = async(page)=>{
+
+    await loginValid(page);
+    await navigateToMyInfoMenu(page);
+
+    const PersonalDeatailObj = new PersonalDetailsPage(page);
+    await PersonalDeatailObj.editDrivingLicencse(QA_ENV.myInfor.personalInfor.drivingLicenseNum,QA_ENV.myInfor.personalInfor.drivingLicensNumExpDate);
+    
+
+ }
+

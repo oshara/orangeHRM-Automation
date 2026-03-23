@@ -69,7 +69,10 @@ export const QA_ENV ={
             middleName:'Jones',
             lastName:'Wade',
             employeeID:'839920',
-            otherID: 'BN03003'
+            otherID: 'BN03003',
+            drivingLicenseNum :'RR - 21992888 ',
+            drivingLicensNumExpDate :'2028-22-05',
+           
 
         }
 
