@@ -13,6 +13,7 @@ export class PersonalDetailsPage {
         this.driverLisenceInputField = page.locator('(//div[@class="oxd-form-row"])[2]/div[2]/div/div[1]/div[2]/input');
         this.lisenceExpirtyInputField = page.locator('(//div[@class="oxd-form-row"])[2]/div[2]/div[2]/div/div[2]/div/div/input');
 
+        this.nationlityField= page.locator('(//div[@class="oxd-select-wrapper"])[1]/div');
         this.nationalityList = page.locator('//div[@role="listbox"]/div/span');
 
         this.saveButton = page.locator('(//button[@type="submit"])[1]');
@@ -43,4 +44,17 @@ export class PersonalDetailsPage {
             await this.page.waitForTimeout(2000);
             await expect(this.successToastMessage).toHaveText('Successfully Updated');
         }
+
+
+        async editDrivingLicencse(drivingLicenseNum,drivingLicenseExpDate){
+            await this.driverLisenceInputField.click();
+            await this.driverLisenceInputField.fill(drivingLicenseNum);
+            await this.lisenceExpirtyInputField.click();
+            await this.lisenceExpirtyInputField.fill(drivingLicenseExpDate);
+            await this.page.waitForTimeout(4000);
+            await this.saveButton.click();
+            await expect(this.successToastMessage).toHaveText('Successfully Updated');
+        }
+
+     
 }
