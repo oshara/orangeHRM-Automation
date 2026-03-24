@@ -72,7 +72,7 @@ export const QA_ENV ={
             otherID: 'BN03003',
             drivingLicenseNum :'RR - 21992888 ',
             drivingLicensNumExpDate :'2028-22-05',
-           
+            nationalityName :'Zambian',
 
         }
 

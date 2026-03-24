@@ -209,5 +209,8 @@ test.describe('Admin Module - Organization section', () => {
             await editDrivingLicenseFunc(page);
         })
 
-     
+        test.only('Personal Details - Edit Nationaltiy',async({page})=>{
+            await editNationalityFunc(page);
+
+        })
     })

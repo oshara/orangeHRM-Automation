@@ -56,5 +56,25 @@ export class PersonalDetailsPage {
             await expect(this.successToastMessage).toHaveText('Successfully Updated');
         }
 
-     
+        async editNationality(nationalityName){
+            await this.nationlityField.click();
+            await this.page.waitForTimeout(4000);
+            const nationalityCount = await this.nationalityList.count();
+            console.log(nationalityCount);
+            for(let i=0; i<nationalityCount;i++){
+                
+                const nationalityText = await this.nationalityList.nth(i).innerText();
+                console.log(nationalityText);
+                if(nationalityText == nationalityName){
+                    console.log("Selected option is " + nationalityText);
+                    await this.nationalityList.nth(i).click();;
+                    break;
+                }
+
+            }
+
+            await this.saveButton.click();
+            await this.page.waitForTimeout(2000);
+            await expect(this.successToastMessage).toHaveText('Successfully Updated');
+        }
 }
