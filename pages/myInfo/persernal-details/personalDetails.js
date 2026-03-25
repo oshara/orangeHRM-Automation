@@ -16,6 +16,10 @@ export class PersonalDetailsPage {
         this.nationlityField= page.locator('(//div[@class="oxd-select-wrapper"])[1]/div');
         this.nationalityList = page.locator('//div[@role="listbox"]/div/span');
 
+        this.maritalStatus = page.locator('(//div[@class="oxd-select-wrapper"])[2]');
+        this.maritalStatusOptionsList = page.locator('(//div[@role="listbox"])/div');
+
+
         this.saveButton = page.locator('(//button[@type="submit"])[1]');
         this.successToastMessage = page.locator('//div[@class="oxd-toast-start"]/div[2]/p[2]');
 
@@ -72,7 +76,27 @@ export class PersonalDetailsPage {
                 }
 
             }
+            await this.saveButton.click();
+            await this.page.waitForTimeout(2000);
+            await expect(this.successToastMessage).toHaveText('Successfully Updated');
+        }
 
+        async editMaritalStatus(maritalStatus){
+            await this.maritalStatus.click();
+            await this.page.waitForTimeout(2000);
+
+            const maritalStatusCount = await  this.maritalStatusOptionsList.count();
+
+            for(let x=0;x<maritalStatusCount; x++){
+                const maritalStatusContent = await this.maritalStatusOptionsList.nth(x).innerText();
+                if(maritalStatusContent == maritalStatus){
+                    await this.maritalStatusOptionsList.nth(x).click();
+                    break;
+                }
+
+            }
+
+            
             await this.saveButton.click();
             await this.page.waitForTimeout(2000);
             await expect(this.successToastMessage).toHaveText('Successfully Updated');

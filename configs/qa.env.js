@@ -73,6 +73,7 @@ export const QA_ENV ={
             drivingLicenseNum :'RR - 21992888 ',
             drivingLicensNumExpDate :'2028-22-05',
             nationalityName :'Zambian',
+            maritalStatus : 'Other',
 
         }
 

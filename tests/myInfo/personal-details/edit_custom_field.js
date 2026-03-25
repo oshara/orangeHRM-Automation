@@ -46,3 +46,11 @@ export const editEmployeeIDFunc = async(page)=>{
     await PersonalDetailObj.editNationality(QA_ENV.myInfor.personalInfor.nationalityName);
 
  }
+
+ export const editMaritalStatusFunc = async(page)=>{
+    await loginValid(page);
+    await navigateToMyInfoMenu(page);
+
+    const PersonalDetailObj = new PersonalDetailsPage(page);
+    await PersonalDetailObj.editMaritalStatus(QA_ENV.myInfor.personalInfor.maritalStatus)
+ }

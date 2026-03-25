@@ -30,7 +30,7 @@ import { deleteLicenseFunc } from './admin/qualifications/licenses/delete_licens
 import { addMembershipsFunc } from './admin/qualifications/memberships/add_memberships';
 import { searchMembershipFunc } from './admin/qualifications/memberships/search_memberships';
 import { deleteMembershipFunc } from './admin/qualifications/memberships/delete_memberships';
-import { editCustomFields, editDrivingLicenseFunc, editEmployeeIDFunc, editNationalityFunc } from './myInfo/personal-details/edit_custom_field';
+import { editCustomFields, editDrivingLicenseFunc, editEmployeeIDFunc, editMaritalStatusFunc, editNationalityFunc } from './myInfo/personal-details/edit_custom_field';
 // test.describe('Admin Module -Users section', () => {
 
 //     test('Add user', async ({ page }) => {
@@ -209,8 +209,12 @@ test.describe('Admin Module - Organization section', () => {
             await editDrivingLicenseFunc(page);
         })
 
-        test.only('Personal Details - Edit Nationaltiy',async({page})=>{
+        test('Personal Details - Edit Nationaltiy',async({page})=>{
             await editNationalityFunc(page);
 
+        })
+
+        test.only('Personal Details - Edit Marital Details',async({page})=>{
+            await editMaritalStatusFunc(page);
         })
     })
