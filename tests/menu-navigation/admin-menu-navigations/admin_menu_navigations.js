@@ -63,3 +63,8 @@ export const navigateToLanguages = async(page)=>{
     const AdminSubMenuObj = new AdminSubMenu(page);
     await AdminSubMenuObj.clickLanguagesMenu();
 }
+
+export const navigateToMemberships = async(page)=>{
+    const AdminSubMenuObj = new AdminSubMenu(page);
+    await AdminSubMenuObj.clickMembershipsMenu();
+}

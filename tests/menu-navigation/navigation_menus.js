@@ -27,3 +27,14 @@ export const navigateToTimeMenu = async (page)=>{
     const NavMenu = new NavigationMenuPage(page);
     await NavMenu.clickTimeMenu();
 }
+
+export const navigateToRecruitmentMenu = async(page)=>{
+    const NavMenu = new NavigationMenuPage(page);
+    await NavMenu.clickRecruitementMenu();
+}
+
+
+export const navigateToMyInfoMenu = async(page)=>{
+    const NavMenu = new NavigationMenuPage(page);
+    await NavMenu.clickMyInforMenu();
+}
