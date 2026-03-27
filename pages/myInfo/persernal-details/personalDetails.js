@@ -20,8 +20,30 @@ export class PersonalDetailsPage {
         this.maritalStatusOptionsList = page.locator('(//div[@role="listbox"])/div');
 
 
+        //date of birth
+        this.dobInputField = page.locator('(//div[@class="oxd-date-input"])[2]');
+
+        //gender
+        this.femaleOption = page.locator('(//div[@class="oxd-radio-wrapper"])[2]/label/input');
+
+
         this.saveButton = page.locator('(//button[@type="submit"])[1]');
         this.successToastMessage = page.locator('//div[@class="oxd-toast-start"]/div[2]/p[2]');
+
+        //custom fields
+        //blood type
+        this.bloodTypeDropDown = page.locator('(//div[@class="oxd-select-wrapper"])[3]');
+        this.bloodTypeList = page.locator('//div[@role="listbox"]/div');
+
+        //test field
+        this.textInputField = page.locator('(//input[@class="oxd-input oxd-input--active"])[7]');
+
+        //save btn
+        this.saveButton = page.locator('(//div[@class="oxd-form-actions"])[2]');
+        
+        
+        //attachments
+
 
     
     }
