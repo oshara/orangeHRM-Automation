@@ -30,7 +30,7 @@ import { deleteLicenseFunc } from './admin/qualifications/licenses/delete_licens
 import { addMembershipsFunc } from './admin/qualifications/memberships/add_memberships';
 import { searchMembershipFunc } from './admin/qualifications/memberships/search_memberships';
 import { deleteMembershipFunc } from './admin/qualifications/memberships/delete_memberships';
-import { editCustomFields, editDrivingLicenseFunc, editEmployeeIDFunc, editMaritalStatusFunc, editNationalityFunc } from './myInfo/personal-details/edit_custom_field';
+import { editBloodTypeFunc, editCustomFields, editDOBFunc, editDrivingLicenseFunc, editEmployeeIDFunc, editMaritalStatusFunc, editNationalityFunc, editTextFieldFunc } from './myInfo/personal-details/edit_custom_field';
 // test.describe('Admin Module -Users section', () => {
 
 //     test('Add user', async ({ page }) => {
@@ -214,7 +214,23 @@ test.describe('Admin Module - Organization section', () => {
 
         })
 
-        test.only('Personal Details - Edit Marital Details',async({page})=>{
+        test('Personal Details - Edit Marital Details',async({page})=>{
             await editMaritalStatusFunc(page);
         })
+
+        test.only('Personal Details - Edit DOB',async({page})=>{
+            await editDOBFunc(page);
+        })
+
+        test.only('Personal Details - Edit Blood Type',async({page})=>{
+            await editBloodTypeFunc(page);
+        })
+
+        test.only('Personal Details - Edit Text Field',async({page})=>{
+            await editTextFieldFunc(page);
+        })
+        
+
+
+
     })

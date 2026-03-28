@@ -54,3 +54,28 @@ export const editEmployeeIDFunc = async(page)=>{
     const PersonalDetailObj = new PersonalDetailsPage(page);
     await PersonalDetailObj.editMaritalStatus(QA_ENV.myInfor.personalInfor.maritalStatus)
  }
+
+ export const editDOBFunc = async(page)=>{
+   await loginValid(page);
+   await navigateToMyInfoMenu(page);
+
+   const PersonalDetailObj = new PersonalDetailsPage(page);
+   await PersonalDetailObj.editDOB(QA_ENV.myInfor.personalInfor.dob);
+ }
+
+ export const editBloodTypeFunc = async(page)=>{
+   await loginValid(page);
+   await navigateToMyInfoMenu(page);
+
+   const PersonalDetailsObj = new PersonalDetailsPage(page);
+   await PersonalDetailsObj.selectBloodType(QA_ENV.myInfor.personalInfor.bloodType);
+
+ }
+
+ export const editTextFieldFunc = async(page)=>{
+   await loginValid(page);
+   await navigateToMyInfoMenu(page);
+
+   const PersonalDetailsObj = new PersonalDetailsPage(page);
+   await PersonalDetailsObj.editTestField(QA_ENV.myInfor.personalInfor.testField);
+ }

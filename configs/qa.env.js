@@ -74,6 +74,10 @@ export const QA_ENV ={
             drivingLicensNumExpDate :'2028-22-05',
             nationalityName :'Zambian',
             maritalStatus : 'Other',
+            dob:'1990-05-06',
+            bloodType:'O+',
+            testField: 'test new',
+            comment: 'adding a custom field comment'
 
         }
 
