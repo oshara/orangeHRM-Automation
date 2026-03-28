@@ -21,7 +21,7 @@ export class PersonalDetailsPage {
 
 
         //date of birth
-        this.dobInputField = page.locator('(//div[@class="oxd-date-input"])[2]');
+        this.dobInputField = page.locator('(//div[@class="oxd-date-input"])[2]/input');
 
         //gender
         this.femaleOption = page.locator('(//div[@class="oxd-radio-wrapper"])[2]/label/input');
@@ -39,10 +39,15 @@ export class PersonalDetailsPage {
         this.textInputField = page.locator('(//input[@class="oxd-input oxd-input--active"])[7]');
 
         //save btn
-        this.saveButton = page.locator('(//div[@class="oxd-form-actions"])[2]');
+        this.saveCustomFieldsButton = page.locator('(//div[@class="oxd-form-actions"])[2]');
         
         
         //attachments
+        this.addAttachmentButton1 = page.locator('//div[@class="orangehrm-action-header"]/button[@type="button"]');
+        this.addAttachmentButton2 = page.locator('//input[@type="file"]');
+        this.saveAttachmentButton = page.locator('(//button[@type="submit"])[3]');
+
+
 
 
     
@@ -123,4 +128,39 @@ export class PersonalDetailsPage {
             await this.page.waitForTimeout(2000);
             await expect(this.successToastMessage).toHaveText('Successfully Updated');
         }
+
+        async editDOB(dob){
+            await this.dobInputField.fill(dob);
+            await this.saveButton.click();
+            await this.page.waitForTimeout(2000);
+            await expect(this.successToastMessage).toHaveText('Successfully Updated');
+
+        }
+
+        async selectBloodType(bloodType){
+            await this.bloodTypeDropDown.click();
+            
+             const bloodListCount = await this.bloodTypeList.count();
+             for(let x=0; x<bloodListCount;x++){
+                const bloodName = await this.bloodTypeList.nth(x).innerText();
+                if(bloodName == bloodType){
+                    await this.bloodTypeList.nth(x).click();
+                    break;
+                }
+             }
+            await this.saveButton.click();
+            await this.page.waitForTimeout(2000);
+            await expect(this.successToastMessage).toHaveText('Successfully Updated');
+
+        }
+
+        async editTestField(testField){
+            await this.editTestField.fill(testField);
+            await this.saveButton.click();
+            await this.page.waitForTimeout(2000);
+            await expect(this.successToastMessage).toHaveText('Successfully Updated');
+        }
+
+        
+        
 }
