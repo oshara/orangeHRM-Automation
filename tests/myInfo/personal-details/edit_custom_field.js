@@ -79,3 +79,11 @@ export const editEmployeeIDFunc = async(page)=>{
    const PersonalDetailsObj = new PersonalDetailsPage(page);
    await PersonalDetailsObj.editTestField(QA_ENV.myInfor.personalInfor.testField);
  }
+
+ export const addAttachmentFunc = async(page)=>{
+   await loginValid(page);
+   await navigateToMyInfoMenu(page);
+
+   const PersonalDetailsObj = new PersonalDetailsPage(page);
+   await PersonalDetailsObj.addAttachmentFile(QA_ENV.myInfor.personalInfor.attachmentFilePath,QA_ENV.myInfor.personalInfor.comment);
+ }

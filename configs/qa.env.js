@@ -77,6 +77,7 @@ export const QA_ENV ={
             dob:'1990-05-06',
             bloodType:'O+',
             testField: 'test new',
+          attachmentFilePath: 'assets/sample1.pdf',
             comment: 'adding a custom field comment'
 
         }

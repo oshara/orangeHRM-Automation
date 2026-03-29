@@ -45,6 +45,8 @@ export class PersonalDetailsPage {
         //attachments
         this.addAttachmentButton1 = page.locator('//div[@class="orangehrm-action-header"]/button[@type="button"]');
         this.addAttachmentButton2 = page.locator('//input[@type="file"]');
+
+        this.commentInputField = page.locator('//textarea[@placeholder="Type comment here"]');
         this.saveAttachmentButton = page.locator('(//button[@type="submit"])[3]');
 
 
@@ -155,10 +157,21 @@ export class PersonalDetailsPage {
         }
 
         async editTestField(testField){
-            await this.editTestField.fill(testField);
+            await this.textInputField.fill(testField);
             await this.saveButton.click();
             await this.page.waitForTimeout(2000);
             await expect(this.successToastMessage).toHaveText('Successfully Updated');
+        }
+
+        async addAttachmentFile(filePath,comment){
+            await this.addAttachmentButton1.click();
+            await this.addAttachmentButton2.setInputFiles(filePath);
+
+            await this.commentInputField.fill(comment);
+
+            await this.saveAttachmentButton.click();
+            await this.page.waitForTimeout(2000);
+            await expect(this.successToastMessage).toHaveText('Successfully Saved');
         }
 
         
