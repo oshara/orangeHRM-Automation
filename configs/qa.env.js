@@ -80,6 +80,17 @@ export const QA_ENV ={
           attachmentFilePath: 'assets/sample1.pdf',
             comment: 'adding a custom field comment'
 
+        },
+
+        contactDetails:{
+            address1:'Main Street',
+            address2: 'Hudson River',
+            city: 'NewYork',
+            state:'Eastern',
+            zipcode:'388244',
+            country:'United States',
+            
+
         }
 
     }
