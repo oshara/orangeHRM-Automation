@@ -63,27 +63,4 @@ export const editEmployeeIDFunc = async(page)=>{
    await PersonalDetailObj.editDOB(QA_ENV.myInfor.personalInfor.dob);
  }
 
- export const editBloodTypeFunc = async(page)=>{
-   await loginValid(page);
-   await navigateToMyInfoMenu(page);
-
-   const PersonalDetailsObj = new PersonalDetailsPage(page);
-   await PersonalDetailsObj.selectBloodType(QA_ENV.myInfor.personalInfor.bloodType);
-
- }
-
- export const editTextFieldFunc = async(page)=>{
-   await loginValid(page);
-   await navigateToMyInfoMenu(page);
-
-   const PersonalDetailsObj = new PersonalDetailsPage(page);
-   await PersonalDetailsObj.editTestField(QA_ENV.myInfor.personalInfor.testField);
- }
-
- export const addAttachmentFunc = async(page)=>{
-   await loginValid(page);
-   await navigateToMyInfoMenu(page);
-
-   const PersonalDetailsObj = new PersonalDetailsPage(page);
-   await PersonalDetailsObj.addAttachmentFile(QA_ENV.myInfor.personalInfor.attachmentFilePath,QA_ENV.myInfor.personalInfor.comment);
- }
+ 
