@@ -71,4 +71,38 @@ export class ContactDetailsPage {
 
             await this.saveContactDetails();
         }
+
+        async fillTelephoneDetails(homeTelephoneNumber,mobileNumber,workMobileNumber){
+            
+            await this.homeNumber.fill(homeTelephoneNumber);
+            await this.page.waitForTimeout(1000);
+
+            await this.mobileNumber.fill(mobileNumber);
+            await this.page.waitForTimeout(1000);
+
+            await this.workNumber.fill(workMobileNumber);
+            await this.page.waitForTimeout(1000);
+
+            await this.saveContactDetails();
+        }
+
+        async fillEmailAddress(workEmailAddress,otherEmailAddress){
+            await this.workEmail.fill(workEmailAddress);
+            await this.page.waitForTimeout(1000);
+            await this.otherEmail.fill(otherEmailAddress);
+            await this.page.waitForTimeout(1000);
+        
+            await this.saveContactDetails();
+            
+        }
+
+        async addAttachment(attachmentpath,comment){
+            await addAttachmentButton.click();
+            await uploadAttachmentButton.setInputFiles(attachmentpath);
+
+            await commentInputField.fill(comment);
+
+            await this.saveAttachmentButton.click();
+             await expect(this.saveSuccessToastMessage).toHaveText('Successfully Saved');
+        }
 }
