@@ -14,3 +14,24 @@ export const editContactDetailsFunc= async(page)=>{
     await ContactDetailsObj.fillAddressDetails(QA_ENV.myInfor.contactDetails.address1,QA_ENV.myInfor.contactDetails.address2,QA_ENV.myInfor.contactDetails.city,QA_ENV.myInfor.contactDetails.state,QA_ENV.myInfor.contactDetails.zipcode,QA_ENV.myInfor.contactDetails.country);
 
 }
+
+export const editTelephoneDetailsFunc = async(page)=>{
+
+    await loginValid(page);
+    await navigateToMyInfoMenu(page);
+    await contactMenuNav(page);
+
+    const ContactDetailsObj = new ContactDetailsPage(page);
+    await ContactDetailsObj.fillTelephoneDetails(QA_ENV.myInfor.contactDetails.homeTelephoneNumber,QA_ENV.myInfor.contactDetails.mobileNumber,QA_ENV.myInfor.contactDetails.workNumber);
+
+}
+
+export const editEmailAddressFunc = async(page)=>{
+    await loginValid(page);
+    await navigateToMyInfoMenu(page);
+    await contactMenuNav(page);
+
+    const ContactDetailsObj = new ContactDetailsPage(page);
+    await ContactDetailsObj.fillEmailAddress(QA_ENV.myInfor.contactDetails.workEmail, QA_ENV.myInfor.contactDetails.otherEmail);
+    
+}

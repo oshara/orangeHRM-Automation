@@ -89,7 +89,13 @@ export const QA_ENV ={
             state:'Eastern',
             zipcode:'388244',
             country:'United States',
-            
+            homeTelephoneNumber: '0400000000',
+            mobileNumber:'077918288929',
+            workNumber: '0400060000',
+            workEmail:'work123@gmail.com',
+            otherEmail:'other123@gmail.com',
+            attachmentPath:'assets/sample1.pdf',
+            comment:'test comment on contact deatails attachment section',
 
         }
 

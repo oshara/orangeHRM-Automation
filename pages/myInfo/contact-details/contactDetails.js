@@ -21,8 +21,8 @@ export class ContactDetailsPage {
         this.workNumber = page.locator('(//div[@class="oxd-form-row"])[2]/div/div[3]/div/div[2]/input');
 
         //Email
-        this.workEmail = page.locator('(//div[@class="oxd-form-row"])[3]/div/div[1]/div/div[2]');
-        this.otherEmail = page.locator('(//div[@class="oxd-form-row"])[3]/div/div[2]/div/div[2]');
+        this.workEmail = page.locator('(//div[@class="oxd-form-row"])[3]/div/div[1]/div/div[2]/input');
+        this.otherEmail = page.locator('(//div[@class="oxd-form-row"])[3]/div/div[2]/div/div[2]/input');
 
 
         this.saveContactDeatilsButton = page.locator('(//div[@class="oxd-form-actions"])[1]/button');
@@ -73,7 +73,7 @@ export class ContactDetailsPage {
         }
 
         async fillTelephoneDetails(homeTelephoneNumber,mobileNumber,workMobileNumber){
-            
+            await this.addressHeading.click();
             await this.homeNumber.fill(homeTelephoneNumber);
             await this.page.waitForTimeout(1000);
 
@@ -87,6 +87,7 @@ export class ContactDetailsPage {
         }
 
         async fillEmailAddress(workEmailAddress,otherEmailAddress){
+            await this.addressHeading.click();
             await this.workEmail.fill(workEmailAddress);
             await this.page.waitForTimeout(1000);
             await this.otherEmail.fill(otherEmailAddress);

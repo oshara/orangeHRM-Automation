@@ -33,7 +33,7 @@ import { deleteMembershipFunc } from './admin/qualifications/memberships/delete_
 import { editDOBFunc, editDrivingLicenseFunc, editEmployeeIDFunc, editMaritalStatusFunc, editNationalityFunc } from './myInfo/personal-details/edit_custom_field';
 import { addAttachmentFunc } from './myInfo/personal-details/add_attachment';
 import { editBloodTypeFunc, editTextFieldFunc } from './myInfo/personal-details/edit_personal_details';
-import { editContactDetailsFunc } from './myInfo/contact-details/edit_contact_details';
+import { editContactDetailsFunc, editEmailAddressFunc, editTelephoneDetailsFunc } from './myInfo/contact-details/edit_contact_details';
 // test.describe('Admin Module -Users section', () => {
 
 //     test('Add user', async ({ page }) => {
@@ -240,8 +240,17 @@ test.describe('Admin Module - Organization section', () => {
     })
 
     test.describe('My Infor - Contact Details',()=>{
-        test.only('Contact Details',async({page})=>{
+        test('Contact Details',async({page})=>{
             await editContactDetailsFunc(page);
             
         })
+        test('Edit Mobile Numbers',async({page})=>{
+            await editTelephoneDetailsFunc(page);
+        })
+
+        test.only('Edit Email Address', async({page})=>{
+            await editEmailAddressFunc(page);
+        })
+
+
     })
