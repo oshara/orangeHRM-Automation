@@ -248,8 +248,13 @@ test.describe('Admin Module - Organization section', () => {
             await editTelephoneDetailsFunc(page);
         })
 
-        test.only('Edit Email Address', async({page})=>{
+        test('Edit Email Address', async({page})=>{
             await editEmailAddressFunc(page);
+        })
+
+        test.only('Add New Attachment',async({page})=>{
+            await addAttachmentFunc(page);
+
         })
 
 

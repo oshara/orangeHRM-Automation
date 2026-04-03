@@ -33,5 +33,14 @@ export const editEmailAddressFunc = async(page)=>{
 
     const ContactDetailsObj = new ContactDetailsPage(page);
     await ContactDetailsObj.fillEmailAddress(QA_ENV.myInfor.contactDetails.workEmail, QA_ENV.myInfor.contactDetails.otherEmail);
-    
+
+}
+
+export const addAttachmentFunc = async(page)=>{
+    await loginValid(page);
+    await navigateToMyInfoMenu(page);
+    await contactMenuNav(page);
+
+    const ContactDetailsObj = new ContactDetailsPage(page);
+    await ContactDetailsObj.addAttachment(QA_ENV.myInfor.contactDetails.attachmentPath,QA_ENV.myInfor.contactDetails.comment);
 }

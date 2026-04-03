@@ -100,10 +100,14 @@ export class ContactDetailsPage {
         async addAttachment(attachmentpath,comment){
             await addAttachmentButton.click();
             await uploadAttachmentButton.setInputFiles(attachmentpath);
+            await this.page.waitForTimeout(5000);
 
             await commentInputField.fill(comment);
 
             await this.saveAttachmentButton.click();
-             await expect(this.saveSuccessToastMessage).toHaveText('Successfully Saved');
+             await expect(this.saveSuccessToastMessage).toHaveText('Successfully Saaved');
         }
+
+
+        
 }
