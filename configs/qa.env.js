@@ -97,6 +97,15 @@ export const QA_ENV ={
             attachmentPath:'assets/sample1.pdf',
             comment:'test comment on contact deatails attachment section',
 
+        },
+
+        emergencyContactDetails:{
+            name:'Kate Smith',
+            relationshipName: 'Cousin',
+            homeTelephoneNumber:'0470000000',
+            mobileTelephoneNumber:'0450000000',
+            workTelephoneNumber:'0480000000'
+
         }
 
     }

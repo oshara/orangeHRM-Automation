@@ -34,6 +34,7 @@ import { editDOBFunc, editDrivingLicenseFunc, editEmployeeIDFunc, editMaritalSta
 import { addAttachmentFunc } from './myInfo/personal-details/add_attachment';
 import { editBloodTypeFunc, editTextFieldFunc } from './myInfo/personal-details/edit_personal_details';
 import { editContactDetailsFunc, editEmailAddressFunc, editTelephoneDetailsFunc } from './myInfo/contact-details/edit_contact_details';
+import { addEmergencyContactFunc } from './myInfo/emergency-contacts/emergency_contacts';
 // test.describe('Admin Module -Users section', () => {
 
 //     test('Add user', async ({ page }) => {
@@ -252,10 +253,19 @@ test.describe('Admin Module - Organization section', () => {
             await editEmailAddressFunc(page);
         })
 
-        test.only('Add New Attachment',async({page})=>{
+        test('Add New Attachment',async({page})=>{
             await addAttachmentFunc(page);
 
         })
 
+       
+
+
+    })
+
+    test.describe('My Infor - Emergency Contact Details',()=>{
+        test.only('Add Emergeyncy Contact',async({page})=>{
+            await addEmergencyContactFunc(page);
+        })
 
     })

@@ -1,3 +1,4 @@
+import { expect } from "@playwright/test";
 export class EmergencyContactsPage {
     constructor(page){
         this.page = page;
@@ -10,6 +11,7 @@ export class EmergencyContactsPage {
         this.workTelphoneInputField = page.locator('(//div[@class="oxd-form-row"])[2]/div/div[3]/div/div[2]/input');
 
         this.saveEmergencyContactButton = page.locator('//button[@type="submit"]');
+        this.toastSuccessMessage = page.locator('//div[@class="oxd-toast-start"]/div[2]/p[2]');
 
         this.addAttachmentButton = page.locator('(//button[@type="button"])[6]');
         this.selectAttachmentOption = page.locator('//input[@type="file"]');
@@ -25,6 +27,7 @@ export class EmergencyContactsPage {
     }
 
     async addEmergencyContact(emergencyName,relationshipName,homeTelephoneNumber,mobileNumber,workMobileNumber){
+        await this.assignedEmergencyContactsButton.click();
         await this.saveEmergencyContactHeading.click();
         await this.nameInputField.fill(emergencyName);
         await this.relationshipInputField.fill(relationshipName);
@@ -32,8 +35,11 @@ export class EmergencyContactsPage {
         await this.mobileInputField.fill(mobileNumber);
         await this.workTelphoneInputField.fill(workMobileNumber);
 
+
+    
         await this.saveEmergencyContactButton.click();
-        
+        await expect(this.toastSuccessMessage).toHaveText('Successfully Saved');
+
 
 
     }
