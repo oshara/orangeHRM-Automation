@@ -104,7 +104,9 @@ export const QA_ENV ={
             relationshipName: 'Cousin',
             homeTelephoneNumber:'0470000000',
             mobileTelephoneNumber:'0450000000',
-            workTelephoneNumber:'0480000000'
+            workTelephoneNumber:'0480000000',
+            filePath :'assets/sample1.pdf',
+            emergencyComment :'adding comment in emergency contact section'
 
         }
 

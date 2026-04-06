@@ -1,6 +1,6 @@
 import { expect } from "@playwright/test";
 export class EmergencyContactsPage {
-    constructor(page){
+    constructor(page) {
         this.page = page;
         this.saveEmergencyContactHeading = page.locator('//h6[normalize-space()="Save Emergency Contact"]');
         this.assignedEmergencyContactsButton = page.locator('(//button[@type="button"])[4]');
@@ -13,20 +13,20 @@ export class EmergencyContactsPage {
         this.saveEmergencyContactButton = page.locator('//button[@type="submit"]');
         this.toastSuccessMessage = page.locator('//div[@class="oxd-toast-start"]/div[2]/p[2]');
 
-        this.addAttachmentButton = page.locator('(//button[@type="button"])[6]');
+        this.addAttachmentButton = page.locator('(//div[@class="orangehrm-action-header"])[2]/button');
         this.selectAttachmentOption = page.locator('//input[@type="file"]');
 
         this.commentInputField = page.locator('//textarea[@placeholder="Type comment here"]');
-        this.saveAttachmentButton = page.locator('(//div[@class="oxd-form-actions"])[2]/button[2]');
+        this.saveAttachmentButton = page.locator('(//div[@class="oxd-form-actions"])/button[2]');
 
 
     }
 
-    async clickAddEmergencyContact(){
+    async clickAddEmergencyContact() {
         await this.assignedEmergencyContactsButton.click();
     }
 
-    async addEmergencyContact(emergencyName,relationshipName,homeTelephoneNumber,mobileNumber,workMobileNumber){
+    async addEmergencyContact(emergencyName, relationshipName, homeTelephoneNumber, mobileNumber, workMobileNumber) {
         await this.assignedEmergencyContactsButton.click();
         await this.saveEmergencyContactHeading.click();
         await this.nameInputField.fill(emergencyName);
@@ -36,10 +36,22 @@ export class EmergencyContactsPage {
         await this.workTelphoneInputField.fill(workMobileNumber);
 
 
-    
+
         await this.saveEmergencyContactButton.click();
         await expect(this.toastSuccessMessage).toHaveText('Successfully Saved');
 
+    }
+
+    async addAttachment(filePath, comment) {
+        
+        await this.addAttachmentButton.click();
+        await this.selectAttachmentOption.setInputFiles(filePath);
+
+        await this.commentInputField.fill(comment);
+
+        await this.saveAttachmentButton.click();
+    
+        await expect(this.toastSuccessMessage).toHaveText('Successfully Saved');
 
 
     }
