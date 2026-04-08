@@ -20,6 +20,10 @@ export class EmergencyContactsPage {
         this.saveAttachmentButton = page.locator('(//div[@class="oxd-form-actions"])/button[2]');
 
 
+
+        // Emergency Contact Table
+        this.emergencyTableColumns = page.locator('//div[@role="row"]/div/div');
+
     }
 
     async clickAddEmergencyContact() {
@@ -55,4 +59,12 @@ export class EmergencyContactsPage {
 
 
     }
+
+    async searchAddedEmergencyContact(emergencyContactName){
+        const correctColumn = await this.emergencyTableColumns.filter({
+            hasText:emergencyContactName
+        }).first();
+        const emergencyText = await correctColumn.innerText();
+        console.log("Newly Added Emergency Contact Name is "+emergencyText);
+        }
 }
