@@ -35,6 +35,8 @@ import { addAttachmentFunc } from './myInfo/personal-details/add_attachment';
 import { editBloodTypeFunc, editTextFieldFunc } from './myInfo/personal-details/edit_personal_details';
 import { editContactDetailsFunc, editEmailAddressFunc, editTelephoneDetailsFunc } from './myInfo/contact-details/edit_contact_details';
 import { addEmergencyContactAttachmentFunc, addEmergencyContactFunc } from './myInfo/emergency-contacts/emergency_contacts';
+import { searchAddedEmergencyContact } from './myInfo/emergency-contacts/search_added_emergency_contact';
+import { addNewCandidateFunc } from './recruitment/candidates/candidates';
 // test.describe('Admin Module -Users section', () => {
 
 //     test('Add user', async ({ page }) => {
@@ -268,9 +270,22 @@ test.describe('Admin Module - Organization section', () => {
             await addEmergencyContactFunc(page);
         })
 
-        test.only ('Add Attachment in Emergency Contact', async({page})=>{
+        test('Add Attachment in Emergency Contact', async({page})=>{
             await addEmergencyContactAttachmentFunc(page);
             
         })
 
+        test('Add and Search the Emergency Contact',async({page})=>{ 
+            await searchAddedEmergencyContact(page);
+        })
+
+    })
+
+
+    test.describe("Recuritement - Candidates",()=>{
+        test.only('Add New Candidate',async({page})=>{
+            await addNewCandidateFunc(page);
+            await page.pause();
+
+        })
     })

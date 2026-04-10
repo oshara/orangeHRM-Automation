@@ -41,14 +41,31 @@ export class CandidatesPage{
     }
     async addName(firstName,middleName,lastName){
         await this.firstNameInputField.fill(firstName);
+        await 
         await this.middleNameInputField.fill(middleName);
         await this.lastNameInputField.fill(lastName);
 
     }
 
+    async vacancySelector(vacancyName){
+        await this.vacancyDropDown.click();
+        const vacancyCount = await this.vacancyList.count();
+        for(let x=0; x< vacancyCount; x++){
+            const vacancyText = await this.vacancyList.nth(x).innerText();
+            if(vacancyText==vacancyName){
+                await this.vacancyList.nth(x).click();
+                break;
+            }
+        }
+    }
 
-    async addNewCandidate(){
-        
+
+    async addNewCandidate(firstName,middleName,lastName,vacancyName){
+        await this.addCandidateButton.click();
+        await this.addName(firstName,middleName,lastName);
+        await this.vacancySelector(vacancyName);
+
+
 
     }
 }

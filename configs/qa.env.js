@@ -110,6 +110,14 @@ export const QA_ENV ={
 
         }
 
+    },
+    recruitment:{
+        candidates:{
+            firstName: 'Alex',
+            middleName: 'Jason',
+            lastName: 'Harrington',
+            vacancyName: 'Senior QA Lead'
+        }
     }
 
 }
