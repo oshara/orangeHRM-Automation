@@ -113,10 +113,17 @@ export const QA_ENV ={
     },
     recruitment:{
         candidates:{
-            firstName: 'Alex',
+            firstName: 'Alexandar',
             middleName: 'Jason',
             lastName: 'Harrington',
-            vacancyName: 'Senior QA Lead'
+            vacancyName: 'Senior QA Lead',
+            email:'testqa@gmail.com',
+            contactNumber:'0404000010',
+            filePath :'assets/sample1.pdf',
+            keywords:'Manual Testing, Bugs, Test Mangement',
+            dateOfApplication:'2026-01-01',
+            notes:'Adding QA related note'
+
         }
     }
 

@@ -1,3 +1,4 @@
+import {expect} from '@playwright/test'
 export class CandidatesPage{
     constructor(page){
         this.page= page;
@@ -25,7 +26,7 @@ export class CandidatesPage{
         this.keywords = page.locator('(//div[@class="oxd-form-row"])[5]/div/div[1]/div/div[2]/input');
 
         //Date of Application
-        this.dateOfApplicationOption = page.locator('(//div[@class="oxd-date-input"])');
+        this.dateOfApplicationOption = page.locator('(//div[@class="oxd-date-input"])/input');
 
         //Notes
         this.notesInputField = page.locator('(//div[@class="oxd-form-row"])[6]/div/div/div/div[2]/textarea')
@@ -37,7 +38,7 @@ export class CandidatesPage{
 
         // Save Button
         this.saveButton = page.locator('//button[@type="submit"]');
-
+        this.saveSuccessToastMessage = page.locator('(//div[@class="oxd-toast-start"])/div[2]/p[2]');
     }
     async addName(firstName,middleName,lastName){
         await this.firstNameInputField.fill(firstName);
@@ -59,13 +60,50 @@ export class CandidatesPage{
         }
     }
 
+    async enterEmail(email){
+        await this.emailInputField.fill(email);
+    }
 
-    async addNewCandidate(firstName,middleName,lastName,vacancyName){
+    async enterContactNumber(contactNumber){
+        await this.contactNumberInputField.fill(contactNumber);
+    }
+
+    async addResume(filePath){
+        await this.resumeOption.setInputFiles(filePath);
+    }
+    async enterKeyWord(keyword){
+        await this.keywords.fill(keyword);
+    }
+
+    async enterDateOfApplication(dateOfApplication){
+        await this.dateOfApplicationOption.fill(dateOfApplication);
+    }
+
+    async enterNotes(notes){
+        await this.notesInputField.fill(notes);
+    }
+
+    async clickConsent(){
+        await this.consentCheckBox.click();
+    }
+
+    async clickSaveButton(){
+        await this.saveButton.click();
+        await expect(this.saveSuccessToastMessage).toHaveText('Successfully Saved');
+    }
+
+    async addNewCandidate(firstName,middleName,lastName,vacancyName,email,contactNumber,filePath,keyword,dateOfApplication,notes){
         await this.addCandidateButton.click();
         await this.addName(firstName,middleName,lastName);
         await this.vacancySelector(vacancyName);
-
-
+        await this.enterEmail(email),
+        await this.enterContactNumber(contactNumber),
+        await this.addResume(filePath);
+        await this.enterKeyWord(keyword);
+        await this.enterDateOfApplication(dateOfApplication);
+        await this.enterNotes(notes);
+        await this.clickConsent();
+        await this.clickSaveButton();
 
     }
 }

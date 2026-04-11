@@ -285,7 +285,7 @@ test.describe('Admin Module - Organization section', () => {
     test.describe("Recuritement - Candidates",()=>{
         test.only('Add New Candidate',async({page})=>{
             await addNewCandidateFunc(page);
-            await page.pause();
+            
 
         })
     })
