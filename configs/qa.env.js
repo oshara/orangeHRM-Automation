@@ -124,6 +124,14 @@ export const QA_ENV ={
             dateOfApplication:'2026-01-01',
             notes:'Adding QA related note'
 
+        },
+
+        vancancies:{
+            vacancyName: `SLC -QA Engineer_${Date.now()}`,
+            jobTitle: 'Content Specialist',
+            description:'Adding a comment on the vacancy post',
+            hrDetatils:'Thomas Kutty Benny',
+            positionCount:'5',
         }
     }
 

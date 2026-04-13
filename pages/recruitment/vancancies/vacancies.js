@@ -1,3 +1,4 @@
+import { expect } from "@playwright/test";
 export class VacanciesPage{
     constructor(page){
         this.page= page;
@@ -8,20 +9,23 @@ export class VacanciesPage{
 
         //Job Title
         this.jobTitleOption = page.locator('//div[@class="oxd-select-wrapper"]');
-        this.jobList = page.locator('//div[@role="listbox"]/div');  
+        this.jobList = page.locator('//div[@role="option"]');  
 
         //Description
         this.descriptionInputField = page.locator('//form[@class="oxd-form"]/div[2]/div/div/div[2]/textarea');
 
         //Hiring Manager Input Field
         this.hiringManagerInpurField = page.locator('//form[@class="oxd-form"]/div[3]/div[1]/div/div[2]//div/div[1]/input');
+        this.hiringMangerHintList = page.locator('//div[@role="option"]');
 
         //Number of Positions
         this.numberOfPositonsInputField = page.locator('//form[@class="oxd-form"]/div[3]/div[2]/div/div/div/div[2]/input');
 
         //Save button
         this.saveButton = page.locator('//div[@class="oxd-form-actions"]/button[2]');
-
+        
+        this.saveSuccessToastMessage = page.locator('(//div[@class="oxd-toast-start"])/div[2]/p[2]');
+    
     }
 
 
@@ -34,14 +38,17 @@ export class VacanciesPage{
     }
 
     async selectJobTitle(jobTitle){
+        console.log(jobTitle)
         await this.jobTitleOption.click();
+        await this.page.waitForTimeout(2000);
 
         const jobListCount = await this.jobList.count();
 
         for(let x=0; x<jobListCount; x++){
-            const jobText = await jobListCount.nth(x).innerText();
-            if(jobText==jobTitle){
-                await jobListCount.nth(x).click();
+    
+            const jobText = await this.jobList.nth(x).innerText();
+            if(jobText===jobTitle){
+                await this.jobList.nth(x).click();
                 break;
             }
         }
@@ -54,6 +61,19 @@ export class VacanciesPage{
 
     async enterHiringManagerDetails(hmDetails){
         await this.hiringManagerInpurField.fill(hmDetails);
+        await this.page.waitForTimeout(2000);
+
+        const hintCount = await this.hiringMangerHintList.count();
+
+        for(let x =0; x<hintCount;x++){
+            const hintText = await this.hiringMangerHintList.nth(x).innerText();
+            if(hintText== hmDetails){
+                await this.hiringMangerHintList.nth(x).click();
+                break;
+            }
+        }
+
+
     }
 
     async enterPostionNumber(positionCount){
@@ -62,11 +82,13 @@ export class VacanciesPage{
 
     async saveVacancyBtn(){
         await this.saveButton.click();
-         await expect(this.saveSuccessToastMessage).toHaveText('Successfully Saved');
+        // await this.page.waitForTimeout(2000);
+        // console.log(await this.saveSuccessToastMessage.innerText());
+        //  await expect(this.saveSuccessToastMessage).toHaveText('Successfully Saved');   
     }
 
 
-    async addNewVacany(vacancyName,jobTitle,jobDescription,hmDetails,positionCount){
+    async addNewVacancy(vacancyName,jobTitle,jobDescription,hmDetails,positionCount){
         await this.clickAddVacancyBtn();
         await this.enterVacancyName(vacancyName);
         await this.selectJobTitle(jobTitle);

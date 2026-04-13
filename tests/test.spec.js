@@ -37,6 +37,7 @@ import { editContactDetailsFunc, editEmailAddressFunc, editTelephoneDetailsFunc 
 import { addEmergencyContactAttachmentFunc, addEmergencyContactFunc } from './myInfo/emergency-contacts/emergency_contacts';
 import { searchAddedEmergencyContact } from './myInfo/emergency-contacts/search_added_emergency_contact';
 import { addNewCandidateFunc } from './recruitment/candidates/candidates';
+import { addNewVacancyFunc } from './recruitment/vancancies/add_vacancy';
 // test.describe('Admin Module -Users section', () => {
 
 //     test('Add user', async ({ page }) => {
@@ -282,10 +283,17 @@ test.describe('Admin Module - Organization section', () => {
     })
 
 
-    test.describe("Recuritement - Candidates",()=>{
-        test.only('Add New Candidate',async({page})=>{
+    test.describe("Recuritement",()=>{
+        test('Candidates - Add New Candidate',async({page})=>{
             await addNewCandidateFunc(page);
             
-
         })
+
+        test.only('Vacancies - Add a New Vacancy',async({page})=>{
+            await addNewVacancyFunc(page);
+        })
+
+        
     })
+
+    
