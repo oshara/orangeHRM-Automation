@@ -25,6 +25,16 @@ export class VacanciesPage{
         this.saveButton = page.locator('//div[@class="oxd-form-actions"]/button[2]');
         
         this.saveSuccessToastMessage = page.locator('(//div[@class="oxd-toast-start"])/div[2]/p[2]');
+
+        //search the Added Vacancy using the Job Title
+        this.jobTitleSearchButton = page.locator('(//div[@class="oxd-select-wrapper"])[1]');
+        this.jobTitlesOptions = page.locator('//div[@role="option"]');
+
+        //search button
+        this.searchBarButton = page.locator('//div[@class="oxd-form-actions"]/button[2]');
+
+        //vacancy table columns
+        this.vacancyTableColoumns = page.locator('//div[@role="cell"]');
     
     }
 
@@ -82,7 +92,7 @@ export class VacanciesPage{
 
     async saveVacancyBtn(){
         await this.saveButton.click();
-        // await this.page.waitForTimeout(2000);
+        await this.page.waitForTimeout(2000);
         // console.log(await this.saveSuccessToastMessage.innerText());
         //  await expect(this.saveSuccessToastMessage).toHaveText('Successfully Saved');   
     }
@@ -97,5 +107,29 @@ export class VacanciesPage{
         await this.enterPostionNumber(positionCount);
         await this.saveVacancyBtn();
 
+    }
+
+    async searchAddedVacancy(jobTitle){
+        await this.jobTitleSearchButton.click();
+        await this.page.waitForTimeout(4000);
+        const jobTitlesCount = await this.jobTitlesOptions.count();
+
+        for(let x =0; x<jobTitlesCount; x++){
+            const jobTitleText = await this.jobTitlesOptions.nth(x).innerText();
+            if(jobTitleText ==jobTitle){
+                await this.jobTitlesOptions.nth(x).click();
+                break;
+            }
+        }
+
+        await this.searchBarButton.click();
+
+        const correctJobColumn = await this.vacancyTableColoumns.filter({
+            hasText: jobTitle,
+        }).first();
+
+
+        const jobName = await correctJobColumn.innerText();
+        console.log("Searched Job Title Name is "+ jobName);
     }
 }
