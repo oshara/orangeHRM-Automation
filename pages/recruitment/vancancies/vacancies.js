@@ -1,4 +1,5 @@
 import { expect } from "@playwright/test";
+import { VacancyMenuNav } from "../../../tests/menu-navigation/recruitment-menu-navigations/recruitment_menu_navigations";
 export class VacanciesPage{
     constructor(page){
         this.page= page;
@@ -110,6 +111,7 @@ export class VacanciesPage{
     }
 
     async searchAddedVacancy(jobTitle){
+        await VacancyMenuNav(this.page);
         await this.jobTitleSearchButton.click();
         await this.page.waitForTimeout(4000);
         const jobTitlesCount = await this.jobTitlesOptions.count();
@@ -123,7 +125,7 @@ export class VacanciesPage{
         }
 
         await this.searchBarButton.click();
-
+     
         const correctJobColumn = await this.vacancyTableColoumns.filter({
             hasText: jobTitle,
         }).first();

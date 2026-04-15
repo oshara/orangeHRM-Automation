@@ -11,8 +11,9 @@ export const addNewVacancyFunc = async(page)=>{
     await VacancyMenuNav(page);
 
     const VacancyObj = new VacanciesPage(page);
-    await VacancyObj.addNewVacancy(QA_ENV.recruitment.vancancies.vacancyName,QA_ENV.recruitment.vancancies.jobTitle,QA_ENV.recruitment.vancancies.description,QA_ENV.recruitment.vancancies.hrDetatils,QA_ENV.recruitment.vancancies.positionCount);
     
-  
+    await VacancyObj.addNewVacancy(QA_ENV.recruitment.vancancies.vacancyName,QA_ENV.recruitment.vancancies.jobTitle,QA_ENV.recruitment.vancancies.description,QA_ENV.recruitment.vancancies.hrDetatils,QA_ENV.recruitment.vancancies.positionCount);
+
+    return QA_ENV.recruitment.vancancies.jobTitle;
 
 }

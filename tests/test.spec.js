@@ -38,6 +38,7 @@ import { addEmergencyContactAttachmentFunc, addEmergencyContactFunc } from './my
 import { searchAddedEmergencyContact } from './myInfo/emergency-contacts/search_added_emergency_contact';
 import { addNewCandidateFunc } from './recruitment/candidates/candidates';
 import { addNewVacancyFunc } from './recruitment/vancancies/add_vacancy';
+import { searchJobVacancyFunc } from './recruitment/vancancies/search_added_vacancy';
 // test.describe('Admin Module -Users section', () => {
 
 //     test('Add user', async ({ page }) => {
@@ -289,10 +290,13 @@ test.describe('Admin Module - Organization section', () => {
             
         })
 
-        test.only('Vacancies - Add a New Vacancy',async({page})=>{
+        test('Vacancies - Add a New Vacancy',async({page})=>{
             await addNewVacancyFunc(page);
         })
 
+        test.only('Vacancies - Search the Added Vacancy',async({page})=>{
+            await searchJobVacancyFunc(page);
+        })
         
     })
 
