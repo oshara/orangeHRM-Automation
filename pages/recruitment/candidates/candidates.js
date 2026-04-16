@@ -1,4 +1,7 @@
 import {expect} from '@playwright/test'
+import { RecruitmentMenu } from '../../navigationMenus/recruitement/recuritementMenu';
+import { navigateToRecruitmentMenu } from '../../../tests/menu-navigation/navigation_menus';
+import { CandidateMenuNav } from '../../../tests/menu-navigation/recruitment-menu-navigations/recruitment_menu_navigations';
 export class CandidatesPage{
     constructor(page){
         this.page= page;
@@ -39,6 +42,17 @@ export class CandidatesPage{
         // Save Button
         this.saveButton = page.locator('//button[@type="submit"]');
         this.saveSuccessToastMessage = page.locator('(//div[@class="oxd-toast-start"])/div[2]/p[2]');
+
+
+        //vacancy search bar to search the added candidate
+        this.vacancyDropDown1 = page.locator('(//div[@class="oxd-select-wrapper"])[2]');
+        this.vacancyList = page.locator('//div[@role="option"]');
+
+        //search button
+        this.searchButton = page.locator('//div[@class="oxd-form-actions"]/button[2]');
+
+        //vacancy table coloumn
+        this.coloumns = page.locator('//div[@role="cell"]');
     }
     async addName(firstName,middleName,lastName){
         await this.firstNameInputField.fill(firstName);
@@ -50,6 +64,7 @@ export class CandidatesPage{
 
     async vacancySelector(vacancyName){
         await this.vacancyDropDown.click();
+        await this.page.waitForTimeout(4000);
         const vacancyCount = await this.vacancyList.count();
         for(let x=0; x< vacancyCount; x++){
             const vacancyText = await this.vacancyList.nth(x).innerText();
@@ -104,6 +119,33 @@ export class CandidatesPage{
         await this.enterNotes(notes);
         await this.clickConsent();
         await this.clickSaveButton();
+        await this.page.waitForTimeout(6000);
+       
 
+    }
+
+    async searchAddedCandidate(vacancyName){
+        await CandidateMenuNav(this.page);
+        await this.vacancyDropDown1.click();
+        await this.page.waitForTimeout(2000);
+
+        const vacancyCount= await this.vacancyList.count();
+
+        for(let x =0;x< vacancyCount; x++){
+            const vacancyText = await this.vacancyList.nth(x).innerText();
+            if(vacancyText == vacancyName){
+                await this.vacancyList.nth(x).click();
+                break;
+            }
+        }
+
+        await this.searchButton.click();
+
+        const vacancyColumn = await this.coloumns.filter({
+            hasText:vacancyName
+        }).first();
+
+        const selectedVacancy = await vacancyColumn.innerText();
+        console.log('Searched Vacancy Name is '+ selectedVacancy);
     }
 }

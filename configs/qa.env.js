@@ -116,7 +116,7 @@ export const QA_ENV ={
             firstName: 'Alexandar',
             middleName: 'Jason',
             lastName: 'Harrington',
-            vacancyName: 'Senior QA Lead',
+            vacancyName: 'Software Engineer',
             email:'testqa@gmail.com',
             contactNumber:'0404000010',
             filePath :'assets/sample1.pdf',
