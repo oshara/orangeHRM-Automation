@@ -40,6 +40,7 @@ import { addNewCandidateFunc } from './recruitment/candidates/add_new_candidates
 import { addNewVacancyFunc } from './recruitment/vancancies/add_vacancy';
 import { searchJobVacancyFunc } from './recruitment/vancancies/search_added_vacancy';
 import { searchAddedCandidate } from './recruitment/candidates/search_added_candidate';
+import { addClaimFunc } from './claim/add_claim';
 // test.describe('Admin Module -Users section', () => {
 
 //     test('Add user', async ({ page }) => {
@@ -291,7 +292,7 @@ test.describe('Admin Module - Organization section', () => {
             
         })
 
-        test.only('Candidates - Search the Added Candiate',async({page})=>{
+        test('Candidates - Search the Added Candiate',async({page})=>{
             await searchAddedCandidate(page)
            
         })
@@ -304,6 +305,12 @@ test.describe('Admin Module - Organization section', () => {
             await searchJobVacancyFunc(page);
         })
         
+    })
+
+    test.describe('Claim',async()=>{
+        test.only('Add a new Claim',async({page})=>{
+            await addClaimFunc(page);
+        })
     })
 
     

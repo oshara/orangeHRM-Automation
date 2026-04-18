@@ -133,6 +133,13 @@ export const QA_ENV ={
             hrDetatils:'Thomas Kutty Benny',
             positionCount:'5',
         }
+    },
+
+    claim:{
+        employeeName:'Jobin Mathew Sam',
+        event:'Travel Allowance',
+        currency:'Japanese Yen',
+        remarks:'This is a test claim added by automation script'
     }
 
 }
