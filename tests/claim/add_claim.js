@@ -11,4 +11,6 @@ export const addClaimFunc = async(page)=>{
     const ClaimObj = new ClaimPage(page);
 
     await ClaimObj.fillClaimForm(QA_ENV.claim.employeeName,QA_ENV.claim.event,QA_ENV.claim.currency,QA_ENV.claim.remarks);
+
+    return QA_ENV.claim.employeeHalfName,QA_ENV.claim.employeeName;
 }
