@@ -137,6 +137,7 @@ export const QA_ENV ={
 
     claim:{
         employeeName:'Jobin Mathew Sam',
+        employeeHalfName:'Jobin',
         event:'Travel Allowance',
         currency:'Japanese Yen',
         remarks:'This is a test claim added by automation script'

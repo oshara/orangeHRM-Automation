@@ -12,7 +12,18 @@ export class ClaimPage {
         this.remarksInputField = page.locator('(//div[@class="oxd-form-row"])[3]/div/div/div/div[2]/textarea');
         this.saveButton = page.locator('(//div[@class="oxd-form-actions"])/button[2]');
 
+        //seach the added cliam using Employee Name
+        this.employeeNameDropDown = page.locator('(//div[@class="oxd-autocomplete-wrapper"])[1]/div/input');
+        this.employeeNameList = page.locator('//div[@role="option"]');
 
+        //search button
+        this.searchButton = page.locator('//button[@type="submit"]');
+
+        //claim table columns list
+        this.claimColumnList = page.locator('//div[@role="cell"]');
+
+        //Employee Claim Title
+        this.claimTitle = page.locator('//h5[normalize-space()="Employee Claims"]');
         
     }
 
@@ -86,5 +97,34 @@ export class ClaimPage {
 
         await this.clickSaveBtn();
     }
+
+    async searchAddedClaim(employeeName,employeeHalfName){
+        await this.claimTitle.click();
+        await this.page.waitForTimeout(2000);
+        await this.employeeNameDropDown.fill(employeeName);
+        await this.page.waitForTimeout(2000);
+
+        const employeeNameCount = await this.employeeNameList.count();
+
+
+        for(let x =0; x<employeeNameCount; x++){
+            const employeeNameText = await this.employeeNameList.nth(x).innerText();
+            if(employeeNameText == employeeName){
+                await this.employeeNameList.nth(x).click();
+                break;
+            }
+        }
+
+        await this.searchButton.click();
+
+        const searchEmployeeName = await this.claimColumnList.filter({
+            hasText:employeeHalfName
+        }).first();
+
+        const searchEmployeeClaim = await searchEmployeeName.innerText();
+        console.log("Newly added claim's employee name is => "+ searchEmployeeClaim);
+    }
+
+
 
 }
