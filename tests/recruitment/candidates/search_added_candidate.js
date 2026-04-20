@@ -11,6 +11,8 @@ export const searchAddedCandidate = async(page)=>{
     const CandidateObj = new CandidatesPage(page);
     await CandidateObj.searchAddedCandidate(vacancyName);
 
+    
+
 
 
 }
