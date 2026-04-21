@@ -10,6 +10,7 @@ export class NavigationMenuPage {
         this.myInforMenu = page.locator('//a[@href="/web/index.php/pim/viewMyDetails"]');
         this.performanceMenu = page.locator('//a[@href="/web/index.php/performance/viewPerformanceModule"]');
         this.dashboardMenu = page.locator('//a[@href="/web/index.php/dashboard/index"]');
+        this.claimMenu = page.locator('//a[@href="/web/index.php/claim/viewClaimModule"]');
         
     }
 
@@ -44,4 +45,8 @@ export class NavigationMenuPage {
     async clickDashboardMenu(){
         await this.dashboardMenu.click();
     }
+    async clickClaimMenu(){
+        await this.claimMenu.click();
+    }
+
 }

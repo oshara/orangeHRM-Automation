@@ -112,6 +112,13 @@ export class AdminSubMenu {
 
     async clickLanguagesMenu(){
         await this.clickQualificationsMenu();
-        await this.clickLanguagesMenu.click();
+        await this.languagesMenu.click();
     }
+
+    async clickMembershipsMenu(){
+        await this.clickQualificationsMenu();
+        await this.membershipsMenu.click();
+
+    }
+
 }
