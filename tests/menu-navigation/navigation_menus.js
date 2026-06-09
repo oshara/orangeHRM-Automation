@@ -38,3 +38,8 @@ export const navigateToMyInfoMenu = async(page)=>{
     const NavMenu = new NavigationMenuPage(page);
     await NavMenu.clickMyInforMenu();
 }
+
+export const navigateToClaimMenu = async(page)=>{
+    const NavMenu = new NavigationMenuPage(page);
+    await NavMenu.clickClaimMenu();
+}

@@ -13,6 +13,8 @@ export const addEmergencyContactFunc = async(page)=>{
     const EmergencyContactObj = new EmergencyContactsPage(page);
     await EmergencyContactObj.addEmergencyContact(QA_ENV.myInfor.emergencyContactDetails.name,QA_ENV.myInfor.emergencyContactDetails.relationshipName,QA_ENV.myInfor.emergencyContactDetails.homeTelephoneNumber,QA_ENV.myInfor.emergencyContactDetails.mobileTelephoneNumber,QA_ENV.myInfor.emergencyContactDetails.workTelephoneNumber);
 
+    return QA_ENV.myInfor.emergencyContactDetails.name;
+
 }
 
 export const addEmergencyContactAttachmentFunc = async(page)=>{

@@ -4,7 +4,7 @@ import { loginValid } from '../../../login/login_valid';
 import { navigateToAdminMenu } from '../../../menu-navigation/navigation_menus';
 import { navigateJobTitle } from '../../../menu-navigation/admin-menu-navigations/admin_menu_navigations';
 
-export const addJob = async ({page}) => {
+export const addJob = async (page) => {
 
     await loginValid(page);
     await navigateToAdminMenu(page);
