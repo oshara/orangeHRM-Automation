@@ -42,6 +42,7 @@ import { searchJobVacancyFunc } from './recruitment/vancancies/search_added_vaca
 import { searchAddedCandidate } from './recruitment/candidates/search_added_candidate';
 import { addClaimFunc } from './claim/add_claim';
 import { searchAddedClaimFunc } from './claim/search_added_claim';
+import { linkNavitionsLoginPage, navigateFaceBook, navigateLinkedInSite, navigatesToOranageHRMSite, navigateToYouTube, twitterPage } from './login/logn_page_logo_navigations';
 // test.describe('Admin Module -Users section', () => {
 
 //     test('Add user', async ({ page }) => {
@@ -312,8 +313,34 @@ test.describe('Admin Module - Organization section', () => {
         test('Add a new Claim',async({page})=>{
             await addClaimFunc(page);
         })
-        test.only('Search a added Claim',async({page})=>{
+        test('Search a added Claim',async({page})=>{
             await searchAddedClaimFunc(page);
+
+        })
+    })
+
+    test.describe('Login - Navigations on social media links',async()=>{
+        test('Naviaget to the Orange HRM site', async()=>{
+            await navigatesToOranageHRMSite();
+        })
+
+        test('Navigate to the Orange HRM LinkedIn site',async()=>{
+            await navigateLinkedInSite();
+        })
+
+        test('Navigate to Orange HRM Facebook ',async()=>{
+
+            await navigateFaceBook();
+
+        })
+
+        test('Navigate to Orange HRM Twitter',async()=>{
+            await twitterPage();
+        })
+
+        test.only('Navigate to Orange HRM YouTube',async()=>{
+
+            await navigateToYouTube();
 
         })
     })
